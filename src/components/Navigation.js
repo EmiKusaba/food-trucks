@@ -19,12 +19,19 @@ const Navigation = (props) => {
       </Typography>
       <ul className="nav-list">
         <li className="nav-list-item">
-          <Link to="/listings"></Link>
+        <Link to="/searching">Search</Link>
         </li>
         {
           checkAuth() ? (
             <li className="nav-list-item">
-              <Link to="/add">Add</Link>
+              <Link to="/setting">Setting</Link>
+            </li >
+          ) : null
+        }
+            {
+          checkAuth() ? (
+            <li className="nav-list-item">
+              <Link to="/favorits">Favorits</Link>
             </li >
           ) : null
         }

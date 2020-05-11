@@ -1,9 +1,9 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
-import LogIn from './containers/LogIn'
-import Listings from './containers/Listings'
-import Details from './containers/Details'
-import AddShop from "./containers/AddShop";
+// import LogIn from './containers/LogIn'
+// import Listings from './containers/Listings'
+// import Details from './containers/Details'
+// import AddShop from "./containers/AddShop";
 import cookie from 'cookie'
 
 export const checkAuth = () => {
@@ -28,9 +28,9 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
 const Router = () => {
   return (
     <Switch>
-      <Route path="/search" component={Search} />
+      {/* <Route path="/search" component={Search} />
       <Route path="/setting" component={Setting} />
-      <Route path="/favorits" component={Details} />
+      <Route path="/favorits" component={Details} /> */}
       {/* <ProtectedRoute path="/add" component={AddShop} />  */}
 
     </Switch>
