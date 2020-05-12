@@ -1,5 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
+import Home from "./components/Home";
 // import LogIn from './containers/LogIn'
 // import Listings from './containers/Listings'
 // import Details from './containers/Details'
@@ -28,6 +29,7 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
 const Router = () => {
   return (
     <Switch>
+      <Route path="/" component={Home} />
       {/* <Route path="/search" component={Search} />
       <Route path="/setting" component={Setting} />
       <Route path="/favorits" component={Details} /> */}
