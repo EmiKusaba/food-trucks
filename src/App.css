@@ -10,3 +10,13 @@
 .nav-list-item {
   margin: auto 20px;
 }
+.login-form {
+  display: flex;
+  flex-direction: column;
+  margin: 50px auto;
+  width: 50%;
+}
+
+.login-button {
+  margin-top: 25px !important;
+}

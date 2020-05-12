@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import {
   TextField,
   Button,
-  Container
+  Container,
+  Link
 } from '@material-ui/core'
  
 
@@ -24,7 +25,7 @@ class LogIn extends Component {
     // set loggedIn = true and max-age = 60*1000 (one minute)
     document.cookie = "loggedIn=true;max-age=60*1000"
     this.props.setUser(this.state)
-    this.props.history.push("/home");
+    this.props.history.push("/");
   }
 
   logout = (e) => {
@@ -33,7 +34,7 @@ class LogIn extends Component {
     // set loggedIn = true and max-age = 60*1000 (one minute)
     document.cookie = "loggedIn=true;max-age=60*1000"
     this.props.setUser(null)
-    this.props.history.push("/home");
+    this.props.history.push("/");
   }
   render() {
     return (
