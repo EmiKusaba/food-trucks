@@ -24,14 +24,14 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
 
-     <Provider store={store}>
-      <BrowserRouter>
-        <Navigation />
-        <Router />
-      </BrowserRouter>
-    </Provider>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Navigation />
+          <Router />
+        </BrowserRouter>
+      </Provider>
 
-</MuiThemeProvider>
+    </MuiThemeProvider>
   )
 }
 

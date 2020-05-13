@@ -10,6 +10,7 @@ import cookie from 'cookie'
 export const checkAuth = () => {
   // Check cookie
   const cookies = cookie.parse(document.cookie)
+  console.log(cookies);
   return cookies["loggedIn"] ? true : false
 }
 
@@ -26,18 +27,22 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
   )
 }
 
-const Router = () => {
-  return (
-    <Switch>
-      <Route path="/login" component={LogIn} />
-      <Route path="/" component={Home} />
-      {/* <Route path="/search" component={Search} />
+class Router extends React.Component {
+  render() {
+    console.log("Router render()");
+    return (
+      <Switch>
+        <Route path="/login" component={LogIn} />
+        <Route path="/foo/:id" component={LogIn} />
+        <Route path="/" component={Home} />
+        {/* <Route path="/search" component={Search} />
       <Route path="/setting" component={Setting} />
       <Route path="/favorits" component={Details} /> */}
-      {/* <ProtectedRoute path="/add" component={AddShop} />  */}
+        {/* <ProtectedRoute path="/add" component={AddShop} />  */}
 
-    </Switch>
-  );
+      </Switch>
+    );
+  }
 };
 
 export default Router;

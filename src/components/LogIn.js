@@ -21,6 +21,7 @@ class LogIn extends Component {
 
   login = (e) => {
     e.preventDefault()
+    console.log("WHAG");
     // set cookie here
     // set loggedIn = true and max-age = 60*1000 (one minute)
     document.cookie = "loggedIn=true;max-age=60*1000"
@@ -32,11 +33,12 @@ class LogIn extends Component {
     e.preventDefault()
     // set cookie here
     // set loggedIn = true and max-age = 60*1000 (one minute)
-    document.cookie = "loggedIn=true;max-age=60*1000"
+    document.cookie = "loggedIn=false;"
     this.props.setUser(null)
-    this.props.history.push("/");
+    //this.props.history.push("/");
   }
   render() {
+    console.log(this.props.user);
     return (
       <div className="App">
         <Container maxWidth="sm">
@@ -59,7 +61,7 @@ class LogIn extends Component {
               type="submit"
               className="login-button"
               variant="contained"
-              color="primary">SAVE</Button>
+              color="primary">Log In</Button>
               <h3>or</h3>
             <Link to="/home">Guest</Link>
           </form>
