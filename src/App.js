@@ -1,5 +1,6 @@
 import React from 'react';
 import Navigation from './components/Navigation'
+import Footer from './components/Footer'
 import './App.css';
 import Router from './Router'
 import { BrowserRouter } from 'react-router-dom'
@@ -29,8 +30,11 @@ function App() {
           <Navigation />
           <Router />
         </BrowserRouter>
-      </Provider>
 
+        <BrowserRouter>
+          <Footer />
+        </BrowserRouter>
+      </Provider>
     </MuiThemeProvider>
   )
 }

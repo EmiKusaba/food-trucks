@@ -21,18 +21,7 @@ import Images from '../Images/paula-vermeulen-URjZkhqsuBk-unsplash.jpg'
 import Toolbar from '@material-ui/core/Toolbar';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -193,10 +182,10 @@ function HeroUnit() {
       <Container maxWidth="75%" style={styles.paperContainer}>
         <MuiThemeProvider theme={theme}>
           <Typography variant="h1">
-          Discover the Latest News and Best Food Trucks in Austin
+            Discover the Latest News and Best Food Trucks in Austin
           </Typography>
           <Typography variant="h3">
-          Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
+            Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
             </Typography>
         </MuiThemeProvider>
       </Container>
@@ -210,11 +199,11 @@ function HeroUnitWithButton() {
     <div className={classes.heroContent} >
       <Container maxWidth="sm">
         <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
-        Download The App
+          Download The App
             </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
-          
-            </Typography>
+
+        </Typography>
         <div className={classes.heroButtons}>
           <Grid container spacing={2} justify="center">
             <Grid item>
@@ -288,6 +277,7 @@ function ScrollableTabsButtonAuto() {
   );
 }
 
+
 function Home() {
   const classes = useStyles();
 
@@ -297,15 +287,7 @@ function Home() {
       <HeroUnit />
       <ScrollableTabsButtonAuto />
       <HeroUnitWithButton />
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>
+      
 
     </Container>
   )
