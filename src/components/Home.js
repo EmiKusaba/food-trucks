@@ -16,7 +16,10 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
+import Image from 'material-ui-image'
+import Images from '../Images/paula-vermeulen-URjZkhqsuBk-unsplash.jpg'
 import Toolbar from '@material-ui/core/Toolbar';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 function Copyright() {
   return (
@@ -96,6 +99,45 @@ TabPanel.propTypes = {
   value: PropTypes.any.isRequired,
 };
 
+function TabContents(props) {
+  const classes = useStyles();
+
+  return (
+    <Container className={classes.cardGrid} maxWidth="md">
+      <h3>{props.title}</h3>
+      <Grid container spacing={4}>
+        {cards.map((card) => (
+          <Grid item key={card} xs={12} sm={6} md={4}>
+            <Card className={classes.card}>
+              <CardMedia
+                className={classes.cardMedia}
+                image="https://source.unsplash.com/random"
+                title="Image title"
+              />
+              <CardContent className={classes.cardContent}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Heading
+                    </Typography>
+                <Typography>
+                  This is a media card. You can use this section to describe the content.
+                    </Typography>
+              </CardContent>
+              <CardActions>
+                <Button size="small" color="primary">
+                  View
+                    </Button>
+                <Button size="small" color="primary">
+                  Edit
+                    </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
+  );
+}
+
 function a11yProps(index) {
   return {
     id: `scrollable-auto-tab-${index}`,
@@ -103,6 +145,94 @@ function a11yProps(index) {
   };
 }
 
+function HeroUnit() {
+  const classes = useStyles();
+  const styles = {
+    paperContainer: {
+      backgroundImage: `url(${Images})`,
+      backgroundSize: "100% 100%",
+      backgroundRepeat: "no-repeat",
+      height: "100vh",
+      color: "white",
+    }
+  };
+  const theme = createMuiTheme({
+    palette: {
+      text: {
+        primary: "#FFFFFF"
+      }
+    },
+
+    typography: {
+      useNextVariants: true,
+      fontFamily: "Montserrat",
+      h1: {
+        fontSize: 40,
+        fontFamily: "Montserrat",
+        fontWeight: 300,
+        color: "#FFFFFF",
+        letterSpacing: "0.0075em",
+        verticalAlign: "middle",
+        alignItems: "center",
+        textAlign: "center"
+      },
+      h3: {
+        fontSize: 25,
+        fontFamily: "Montserrat",
+        fontWeight: 300,
+        color: "#FFFFFF",
+        letterSpacing: "0.0075em",
+        verticalAlign: "middle",
+        alignItems: "center",
+        textAlign: "center"
+      }
+    }
+  });
+  return (
+    <div className={classes.heroContent} >
+      <Container maxWidth="75%" style={styles.paperContainer}>
+        <MuiThemeProvider theme={theme}>
+          <Typography variant="h1">
+          Discover the Latest News and Best Food Trucks in Austin
+          </Typography>
+          <Typography variant="h3">
+          Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
+            </Typography>
+        </MuiThemeProvider>
+      </Container>
+    </div>
+  );
+}
+
+function HeroUnitWithButton() {
+  const classes = useStyles();
+  return (
+    <div className={classes.heroContent} >
+      <Container maxWidth="sm">
+        <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
+        Download The App
+            </Typography>
+        <Typography variant="h5" align="center" color="textSecondary" paragraph>
+          
+            </Typography>
+        <div className={classes.heroButtons}>
+          <Grid container spacing={2} justify="center">
+            <Grid item>
+              <Button variant="contained" color="primary">
+                Download on the App Store
+                  </Button>
+            </Grid>
+            <Grid item>
+              <Button variant="outlined" color="primary">
+                Get it on Google Play
+                  </Button>
+            </Grid>
+          </Grid>
+        </div>
+      </Container>
+    </div>
+  );
+}
 
 function ScrollableTabsButtonAuto() {
   const classes = useStyles();
@@ -124,35 +254,35 @@ function ScrollableTabsButtonAuto() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-          <Tab label="Item Four" {...a11yProps(3)} />
-          <Tab label="Item Five" {...a11yProps(4)} />
-          <Tab label="Item Six" {...a11yProps(5)} />
-          <Tab label="Item Seven" {...a11yProps(6)} />
+          <Tab label="American" {...a11yProps(0)} />
+          <Tab label="Mexican" {...a11yProps(1)} />
+          <Tab label="BBQ" {...a11yProps(2)} />
+          <Tab label="Asian" {...a11yProps(3)} />
+          <Tab label="Italian" {...a11yProps(4)} />
+          <Tab label="Dessert" {...a11yProps(5)} />
+          <Tab label="Others" {...a11yProps(6)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        Item One
+        <TabContents title="American" />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <TabContents title="Mexican" />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <TabContents title="BBQ" />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <TabContents title="Asian" />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        <TabContents title="Italian" />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <TabContents title="Dessert" />
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        <TabContents title="Others" />
       </TabPanel>
     </div>
   );
@@ -162,70 +292,11 @@ function Home() {
   const classes = useStyles();
 
   return (
-    <Container maxWidth="sm" className="home-container">
+    <Container width="75%" className="home-container">
 
-      {/* Hero unit */}
-      <div className={classes.heroContent}>
-        <Container maxWidth="sm">
-          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-            Album layout
-            </Typography>
-          <Typography variant="h5" align="center" color="textSecondary" paragraph>
-            Something short and leading about the collection below—its contents, the creator, etc.
-            Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-            entirely.
-            </Typography>
-          <div className={classes.heroButtons}>
-            <Grid container spacing={2} justify="center">
-              <Grid item>
-                <Button variant="contained" color="primary">
-                  Main call to action
-                  </Button>
-              </Grid>
-              <Grid item>
-                <Button variant="outlined" color="primary">
-                  Secondary action
-                  </Button>
-              </Grid>
-            </Grid>
-          </div>
-        </Container>
-      </div>
-
+      <HeroUnit />
       <ScrollableTabsButtonAuto />
-
-      <Container className={classes.cardGrid} maxWidth="md">
-        <Grid container spacing={4}>
-          {cards.map((card) => (
-            <Grid item key={card} xs={12} sm={6} md={4}>
-              <Card className={classes.card}>
-                <CardMedia
-                  className={classes.cardMedia}
-                  image="https://source.unsplash.com/random"
-                  title="Image title"
-                />
-                <CardContent className={classes.cardContent}>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Heading
-                    </Typography>
-                  <Typography>
-                    This is a media card. You can use this section to describe the content.
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small" color="primary">
-                    View
-                    </Button>
-                  <Button size="small" color="primary">
-                    Edit
-                    </Button>
-                </CardActions>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-
+      <HeroUnitWithButton />
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
