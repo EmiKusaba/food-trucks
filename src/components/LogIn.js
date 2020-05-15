@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { withStyles } from "@material-ui/core/styles";
+
 
 function Copyright() {
   return (
@@ -28,7 +30,7 @@ function Copyright() {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
+const styles = theme => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -46,10 +48,11 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+});
 
 
 class LogIn extends Component {
+  
   state = {
     username: '',
     password: ''
@@ -81,13 +84,13 @@ class LogIn extends Component {
   }
   render() {
     console.log(this.props.user);
-
+    const { classes } = this.props;
     return (
       <div className="App">
         <Container maxWidth="sm">
           <CssBaseline />
-          <div className={useStyles.paper}>
-            <Avatar className={useStyles.avatar}>
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
@@ -145,4 +148,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default withStyles(styles, { withTheme: true })(LogIn);
