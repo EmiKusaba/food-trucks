@@ -29,12 +29,10 @@ function App() {
         <BrowserRouter>
           <Navigation />
           <Router />
-        </BrowserRouter>
-
-        <BrowserRouter>
           <Footer />
         </BrowserRouter>
       </Provider>
+      
     </MuiThemeProvider>
   )
 }
