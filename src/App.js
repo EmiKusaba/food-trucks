@@ -8,14 +8,20 @@ import { Provider } from 'react-redux'
 import store from './redux/store'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
+import blue from '@material-ui/core/colors/blue';
+
 
 
 const primary = orange[500];
+const secondary = blue [500];
 
 const theme = createMuiTheme({
   palette: {
     primary: {
       main: primary,
+    },
+    secondary: {
+      main: secondary,
     }
   }
 },
@@ -32,7 +38,7 @@ function App() {
           <Footer />
         </BrowserRouter>
       </Provider>
-      
+
     </MuiThemeProvider>
   )
 }

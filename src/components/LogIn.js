@@ -5,7 +5,49 @@ import {
   Container,
   Link
 } from '@material-ui/core'
- 
+import Grid from '@material-ui/core/Grid';
+import Avatar from '@material-ui/core/Avatar';
+import { makeStyles } from '@material-ui/core/styles';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.primary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
 
 class LogIn extends Component {
   state = {
@@ -39,32 +81,64 @@ class LogIn extends Component {
   }
   render() {
     console.log(this.props.user);
+
     return (
       <div className="App">
         <Container maxWidth="sm">
-          <form className="login-form" onSubmit={this.login}>
-            <TextField
-              required
-              onChange={this.handleTextChange}
-              value={this.state.username}
-              name="username"
-              label="Username"
-              type="text" />
-            <TextField
-              required
-              onChange={this.handleTextChange}
-              value={this.state.password}
-              name="password"
-              label="Password"
-              type="password" />
-            <Button
-              type="submit"
-              className="login-button"
-              variant="contained"
-              color="primary">Log In</Button>
+          <CssBaseline />
+          <div className={useStyles.paper}>
+            <Avatar className={useStyles.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+            <form className="login-form" onSubmit={this.login}>
+              <TextField
+                required
+                onChange={this.handleTextChange}
+                value={this.state.username}
+                name="username"
+                label="Username"
+                type="text" />
+              <TextField
+                required
+                onChange={this.handleTextChange}
+                value={this.state.password}
+                name="password"
+                label="Password"
+                type="password" />
+              <Button
+                type="submit"
+                className="login-button"
+                variant="contained"
+                color="secondary">Log In</Button>
+
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+
+              <Grid container>
+                <Grid item>
+                  <Link href="#" color="secondary">
+                    Forgot password?
+              </Link>
+                </Grid>
+                <br/>
+                <Grid item>
+                  <Link href="#" color="secondary">
+                    Don't have an account? Sign Up
+                </Link>
+                </Grid>
+              </Grid>
               <h3>or</h3>
-            <Link to="/home">Guest</Link>
-          </form>
+              <Link to="/" color="secondary">Enter as Guest</Link>
+            </form>
+          </div>
+          <Box mt={8}>
+            <Copyright />
+          </Box>
         </Container>
       </div>
     );
