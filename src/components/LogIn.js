@@ -7,7 +7,6 @@ import {
 } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
-import { makeStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
@@ -22,7 +21,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      www.foodtrackstrucker.com
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -87,7 +86,7 @@ class LogIn extends Component {
     const { classes } = this.props;
     return (
       <div className="App">
-        <Container maxWidth="sm">
+        <Container component="main" maxWidth="sm" >
           <CssBaseline />
           <div className={classes.paper}>
             <Avatar className={classes.avatar}>
@@ -123,20 +122,20 @@ class LogIn extends Component {
               />
 
               <Grid container>
-                <Grid item>
-                  <Link href="#" color="secondary">
+                <Grid item sm={6}>
+                  <Link href="#" color="secondary" variant="body2">
                     Forgot password?
               </Link>
                 </Grid>
                 <br/>
-                <Grid item>
-                  <Link href="#" color="secondary">
+                <Grid item item sm={6}>
+                  <Link href="#" color="secondary" variant="body2">
                     Don't have an account? Sign Up
                 </Link>
                 </Grid>
               </Grid>
               <h3>or</h3>
-              <Link to="/" color="secondary">Enter as Guest</Link>
+              <Link to="/" color="secondary" variant="body2">Enter as Guest</Link>
             </form>
           </div>
           <Box mt={8}>

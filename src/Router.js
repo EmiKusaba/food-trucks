@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router'
 import Home from "./containers/Home";
 import LogIn from './containers/LogIn'
-// import Listings from './containers/Listings'
+import Search from './containers/Search'
 // import Details from './containers/Details'
 // import AddShop from "./containers/AddShop";
 import cookie from 'cookie'
@@ -35,9 +35,9 @@ class Router extends React.Component {
         <Route path="/login" component={LogIn} />
         <Route path="/foo/:id" component={LogIn} />
         <Route path="/" component={Home} />
-        {/* <Route path="/search" component={Search} />
-      <Route path="/setting" component={Setting} />
-      <Route path="/favorits" component={Details} /> */}
+        <Route path="/search" component={Search} />
+        {/* <Route path="/setting" component={Setting} />
+        <Route path="/favorits" component={Details} /> */} 
         {/* <ProtectedRoute path="/add" component={AddShop} />  */}
 
       </Switch>

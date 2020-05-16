@@ -17,8 +17,6 @@ import Grid from '@material-ui/core/Grid';
 import Images from '../Images/paula-vermeulen-URjZkhqsuBk-unsplash.jpg'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -122,7 +120,6 @@ function TabContents(props) {
     </Container>
   );
 }
-
 function a11yProps(index) {
   return {
     id: `scrollable-auto-tab-${index}`,
@@ -274,7 +271,7 @@ function ScrollableTabsButtonAuto() {
 }
 
 
-function Home() {
+function Search() {
   const classes = useStyles();
 
   return (
@@ -289,4 +286,4 @@ function Home() {
   )
 }
 
-export default Home;
+export default Search;
