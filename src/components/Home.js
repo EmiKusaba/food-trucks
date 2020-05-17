@@ -141,49 +141,15 @@ function HeroUnit() {
       color: "white",
     }
   };
-  const theme = createMuiTheme({
-    palette: {
-      text: {
-        primary: "#FFFFFF"
-      }
-    },
-
-    typography: {
-      useNextVariants: true,
-      fontFamily: "Montserrat",
-      h1: {
-        fontSize: 40,
-        fontFamily: "Montserrat",
-        fontWeight: 300,
-        color: "#FFFFFF",
-        letterSpacing: "0.0075em",
-        verticalAlign: "middle",
-        alignItems: "center",
-        textAlign: "center"
-      },
-      h3: {
-        fontSize: 25,
-        fontFamily: "Montserrat",
-        fontWeight: 300,
-        color: "#FFFFFF",
-        letterSpacing: "0.0075em",
-        verticalAlign: "middle",
-        alignItems: "center",
-        textAlign: "center"
-      }
-    }
-  });
   return (
     <div className={classes.heroContent} >
       <Container maxWidth="75%" style={styles.paperContainer}>
-        <MuiThemeProvider theme={theme}>
-          <Typography variant="h1">
-            Discover the Latest News and Best Food Trucks in Austin
+        <Typography variant="h1">
+          Discover the Latest News and Best Food Trucks in Austin
           </Typography>
-          <Typography variant="h3">
-            Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
+        <Typography variant="h3">
+          Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
             </Typography>
-        </MuiThemeProvider>
       </Container>
     </div>
   );
@@ -279,12 +245,9 @@ function Home() {
 
   return (
     <Container width="75%" className="home-container">
-
       <HeroUnit />
       <ScrollableTabsButtonAuto />
       <HeroUnitWithButton />
-      
-
     </Container>
   )
 }

@@ -34,8 +34,8 @@ class Router extends React.Component {
       <Switch>
         <Route path="/login" component={LogIn} />
         <Route path="/foo/:id" component={LogIn} />
-        <Route path="/" component={Home} />
         <Route path="/search" component={Search} />
+        <Route path="/" component={Home} />
         {/* <Route path="/setting" component={Setting} />
         <Route path="/favorits" component={Details} /> */} 
         {/* <ProtectedRoute path="/add" component={AddShop} />  */}

@@ -10,10 +10,8 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
 import blue from '@material-ui/core/colors/blue';
 
-
-
 const primary = orange[500];
-const secondary = blue [500];
+const secondary = blue[500];
 
 const theme = createMuiTheme({
   palette: {
@@ -22,6 +20,35 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: secondary,
+    },
+  },
+
+  text: {
+    primary: "#FFFFFF"
+  },
+
+  typography: {
+    useNextVariants: true,
+    fontFamily: "Montserrat",
+    h1: {
+      fontSize: 40,
+      fontFamily: "Montserrat",
+      fontWeight: 300,
+      color: "#FFFFFF",
+      letterSpacing: "0.0075em",
+      verticalAlign: "middle",
+      alignItems: "center",
+      textAlign: "center"
+    },
+    h3: {
+      fontSize: 25,
+      fontFamily: "Montserrat",
+      fontWeight: 300,
+      color: "#FFFFFF",
+      letterSpacing: "0.0075em",
+      verticalAlign: "middle",
+      alignItems: "center",
+      textAlign: "center"
     }
   }
 },

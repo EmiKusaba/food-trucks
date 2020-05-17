@@ -14,8 +14,14 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Images from '../Images/paula-vermeulen-URjZkhqsuBk-unsplash.jpg'
+import Images from '../Images/jeremy-banks-DnHUeDYzpUo-unsplash.jpg'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -138,49 +144,54 @@ function HeroUnit() {
       color: "white",
     }
   };
-  const theme = createMuiTheme({
-    palette: {
-      text: {
-        primary: "#FFFFFF"
-      }
-    },
 
-    typography: {
-      useNextVariants: true,
-      fontFamily: "Montserrat",
-      h1: {
-        fontSize: 40,
-        fontFamily: "Montserrat",
-        fontWeight: 300,
-        color: "#FFFFFF",
-        letterSpacing: "0.0075em",
-        verticalAlign: "middle",
-        alignItems: "center",
-        textAlign: "center"
-      },
-      h3: {
-        fontSize: 25,
-        fontFamily: "Montserrat",
-        fontWeight: 300,
-        color: "#FFFFFF",
-        letterSpacing: "0.0075em",
-        verticalAlign: "middle",
-        alignItems: "center",
-        textAlign: "center"
-      }
-    }
-  });
+  const [category, setCategory] = React.useState("");
+  const handleCategory = (event) => {
+    setCategory(event.target.value);
+  };
+
+  const [location, setLocation] = React.useState("");
+  const handleLocation = (event) => {
+    setLocation(event.target.value);
+  };
+
   return (
     <div className={classes.heroContent} >
       <Container maxWidth="75%" style={styles.paperContainer}>
-        <MuiThemeProvider theme={theme}>
-          <Typography variant="h1">
-            Discover the Latest News and Best Food Trucks in Austin
+        <Typography variant="h1">
+          Discover the Latest News and Best Food Trucks in Austin
           </Typography>
-          <Typography variant="h3">
-            Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
+        <Typography variant="h3">
+          Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
             </Typography>
-        </MuiThemeProvider>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">Category</InputLabel>
+          <Select
+            labelId="select-label-category"
+            id="select-category"
+            value={category}
+            onChange={handleCategory}
+          >
+            <MenuItem value={"American"}>American</MenuItem>
+            <MenuItem value={"Asian"}>Asian</MenuItem>
+          </Select>
+          <Select
+            labelId="select-label-location"
+            id="select-location"
+            value={location}
+            onChange={handleLocation}
+          >
+            <MenuItem value={"Downtown"}>Downtown</MenuItem>
+            <MenuItem value={"Rosedale"}>Rosedale</MenuItem>
+          </Select>
+        </FormControl>
+        <Button
+          type="search"
+          className="login-button"
+          variant="contained"
+          color="secondary">
+          Search
+        </Button>
       </Container>
     </div>
   );
@@ -280,7 +291,7 @@ function Search() {
       <HeroUnit />
       <ScrollableTabsButtonAuto />
       <HeroUnitWithButton />
-      
+
 
     </Container>
   )
