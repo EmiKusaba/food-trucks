@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Paper } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -14,14 +13,11 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Images from '../Images/jeremy-banks-DnHUeDYzpUo-unsplash.jpg'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import Images from '../Images/nordwood-themes-Tmz8FThN_BE-unsplash.jpg'
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,7 +71,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          {children}
         </Box>
       )}
     </div>
@@ -93,7 +89,6 @@ function TabContents(props) {
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
-      <h3>{props.title}</h3>
       <Grid container spacing={4}>
         {cards.map((card) => (
           <Grid item key={card} xs={12} sm={6} md={4}>
@@ -107,15 +102,15 @@ function TabContents(props) {
                 <Typography gutterBottom variant="h5" component="h2">
                   Heading
                     </Typography>
-                <Typography>
+                <Typography >
                   This is a media card. You can use this section to describe the content.
                     </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="secondary">
                   View
                     </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="secondary">
                   Edit
                     </Button>
               </CardActions>
@@ -157,41 +152,48 @@ function HeroUnit() {
 
   return (
     <div className={classes.heroContent} >
-      <Container maxWidth="75%" style={styles.paperContainer}>
+      <Container maxWidth="lg" style={styles.paperContainer}>
         <Typography variant="h1">
           Discover the Latest News and Best Food Trucks in Austin
-          </Typography>
+        </Typography>
         <Typography variant="h3">
           Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
-            </Typography>
-        <FormControl className={classes.formControl}>
-          <InputLabel id="demo-simple-select-label">Category</InputLabel>
-          <Select
-            labelId="select-label-category"
-            id="select-category"
-            value={category}
-            onChange={handleCategory}
-          >
-            <MenuItem value={"American"}>American</MenuItem>
-            <MenuItem value={"Asian"}>Asian</MenuItem>
-          </Select>
-          <Select
-            labelId="select-label-location"
-            id="select-location"
-            value={location}
-            onChange={handleLocation}
-          >
-            <MenuItem value={"Downtown"}>Downtown</MenuItem>
-            <MenuItem value={"Rosedale"}>Rosedale</MenuItem>
-          </Select>
-        </FormControl>
-        <Button
-          type="search"
-          className="login-button"
-          variant="contained"
-          color="secondary">
-          Search
-        </Button>
+        </Typography>
+        <Container maxWidth="sm">
+          <form className="login-form">
+            <FormControl>
+              <InputLabel id="select-label-category">Category</InputLabel>
+              <Select
+                labelId="select-label-category"
+                id="select-category"
+                value={category}
+                onChange={handleCategory}
+              >
+                <MenuItem value={"American"}>American</MenuItem>
+                <MenuItem value={"Asian"}>Asian</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl>
+              <InputLabel id="select-label-location">Location</InputLabel>
+              <Select
+                labelId="select-label-location"
+                id="select-location"
+                value={location}
+                onChange={handleLocation}
+              >
+                <MenuItem value={"Downtown"}>Downtown</MenuItem>
+                <MenuItem value={"Rosedale"}>Rosedale</MenuItem>
+              </Select>
+            </FormControl>
+            <Button
+              type="submit"
+              className="login-button"
+              variant="contained"
+              color="secondary">
+              Search
+            </Button>
+          </form>
+        </Container>
       </Container>
     </div>
   );
@@ -204,7 +206,7 @@ function HeroUnitWithButton() {
       <Container maxWidth="sm">
         <Typography component="h1" variant="h3" align="center" color="textPrimary" gutterBottom>
           Download The App
-            </Typography>
+        </Typography>
         <Typography variant="h5" align="center" color="textSecondary" paragraph>
 
         </Typography>
@@ -283,15 +285,12 @@ function ScrollableTabsButtonAuto() {
 
 
 function Search() {
-  const classes = useStyles();
-
   return (
-    <Container width="75%" className="home-container">
+    <Container maxWidth="lg" className="home-container">
 
       <HeroUnit />
       <ScrollableTabsButtonAuto />
       <HeroUnitWithButton />
-
 
     </Container>
   )

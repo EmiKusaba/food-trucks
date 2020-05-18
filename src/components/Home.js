@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container, Paper } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -15,9 +14,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Images from '../Images/paula-vermeulen-URjZkhqsuBk-unsplash.jpg'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -143,7 +139,7 @@ function HeroUnit() {
   };
   return (
     <div className={classes.heroContent} >
-      <Container maxWidth="75%" style={styles.paperContainer}>
+      <Container maxWidth="lg" style={styles.paperContainer}>
         <Typography variant="h1">
           Discover the Latest News and Best Food Trucks in Austin
           </Typography>
@@ -241,8 +237,6 @@ function ScrollableTabsButtonAuto() {
 
 
 function Home() {
-  const classes = useStyles();
-
   return (
     <Container width="75%" className="home-container">
       <HeroUnit />

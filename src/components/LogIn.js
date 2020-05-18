@@ -16,12 +16,14 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { withStyles } from "@material-ui/core/styles";
 
 
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-      www.foodtrackstrucker.com
+        www.foodtrackstrucker.com
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -51,7 +53,7 @@ const styles = theme => ({
 
 
 class LogIn extends Component {
-  
+
   state = {
     username: '',
     password: ''
@@ -81,7 +83,6 @@ class LogIn extends Component {
     //this.props.history.push("/");
   }
   render() {
-    console.log(this.props.user);
     const { classes } = this.props;
     return (
       <div className="App">
@@ -126,8 +127,8 @@ class LogIn extends Component {
                     Forgot password?
               </Link>
                 </Grid>
-                <br/>
-                <Grid item item sm={6}>
+                <br />
+                <Grid item sm={6}>
                   <Link href="#" color="secondary" variant="body2">
                     Don't have an account? Sign Up
                 </Link>

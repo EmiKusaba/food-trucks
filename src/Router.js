@@ -10,7 +10,6 @@ import cookie from 'cookie'
 export const checkAuth = () => {
   // Check cookie
   const cookies = cookie.parse(document.cookie)
-  console.log(cookies);
   return cookies["loggedIn"] ? true : false
 }
 
@@ -29,7 +28,6 @@ export const ProtectedRoute = ({ component: Component, ...rest }) => {
 
 class Router extends React.Component {
   render() {
-    console.log("Router render()");
     return (
       <Switch>
         <Route path="/login" component={LogIn} />

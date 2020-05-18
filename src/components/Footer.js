@@ -43,7 +43,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
+      <Link color="inherit" to="https://material-ui.com/">
         www.foodtrackstrucker.com
       </Link>{' '}
       {new Date().getFullYear()}
@@ -63,7 +63,7 @@ function Footer() {
         +44 345 675 903<br />
         Foodtruckstracker@gmail.com
     </Typography>
-      <Copyright />
+    <Copyright />
     </footer>
   )
 }

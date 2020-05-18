@@ -12,6 +12,7 @@ import blue from '@material-ui/core/colors/blue';
 
 const primary = orange[500];
 const secondary = blue[500];
+const dark = 'rgba(0, 0, 0, 0.87)'
 
 const theme = createMuiTheme({
   palette: {
@@ -22,11 +23,6 @@ const theme = createMuiTheme({
       main: secondary,
     },
   },
-
-  text: {
-    primary: "#FFFFFF"
-  },
-
   typography: {
     useNextVariants: true,
     fontFamily: "Montserrat",
@@ -34,7 +30,7 @@ const theme = createMuiTheme({
       fontSize: 40,
       fontFamily: "Montserrat",
       fontWeight: 300,
-      color: "#FFFFFF",
+      color: dark,
       letterSpacing: "0.0075em",
       verticalAlign: "middle",
       alignItems: "center",
@@ -44,7 +40,7 @@ const theme = createMuiTheme({
       fontSize: 25,
       fontFamily: "Montserrat",
       fontWeight: 300,
-      color: "#FFFFFF",
+      color: dark,
       letterSpacing: "0.0075em",
       verticalAlign: "middle",
       alignItems: "center",

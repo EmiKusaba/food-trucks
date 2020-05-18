@@ -6,10 +6,8 @@ import { checkAuth } from "../Router";
 
 class Navigation extends React.Component {
   render() {
-    console.log("NAVIGATION");
     return (
-
-      <AppBar position="relative">
+      <AppBar position="relative" color="primary">
         <Toolbar>
           <IconButton color="inherit">
             <MenuIcon />
@@ -44,7 +42,6 @@ class Navigation extends React.Component {
           </ul>
         </Toolbar>
       </AppBar>
-
     )
   }
 }
