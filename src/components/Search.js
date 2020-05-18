@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
+    // paddingTop: theme.spacing(8),
     paddingBottom: theme.spacing(8),
   },
   card: {
@@ -170,7 +170,10 @@ function HeroUnit() {
                 onChange={handleCategory}
               >
                 <MenuItem value={"American"}>American</MenuItem>
-                <MenuItem value={"Asian"}>Asian</MenuItem>
+                <MenuItem value={"Mexican"}>Mexican</MenuItem>
+                <MenuItem value={"BBQ"}>BBQ</MenuItem>
+                <MenuItem value={"Desset"}>Desset</MenuItem>
+                <MenuItem value={"Others"}>Others</MenuItem>
               </Select>
             </FormControl>
             <FormControl>
@@ -182,7 +185,11 @@ function HeroUnit() {
                 onChange={handleLocation}
               >
                 <MenuItem value={"Downtown"}>Downtown</MenuItem>
-                <MenuItem value={"Rosedale"}>Rosedale</MenuItem>
+                <MenuItem value={"Central Austin"}>Central Austin</MenuItem>
+                <MenuItem value={"East Austin"}>East Austin</MenuItem>
+                <MenuItem value={"West Austin"}>West Austin</MenuItem>
+                <MenuItem value={"South Austin"}>South Austin</MenuItem>
+              
               </Select>
             </FormControl>
             <Button
@@ -239,25 +246,9 @@ function ScrollableTabsButtonAuto() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          indicatorColor="primary"
-          textColor="primary"
-          variant="scrollable"
-          scrollButtons="auto"
-          aria-label="scrollable auto tabs example"
-        >
-          <Tab label="American" {...a11yProps(0)} />
-          <Tab label="Mexican" {...a11yProps(1)} />
-          <Tab label="BBQ" {...a11yProps(2)} />
-          <Tab label="Asian" {...a11yProps(3)} />
-          <Tab label="Italian" {...a11yProps(4)} />
-          <Tab label="Dessert" {...a11yProps(5)} />
-          <Tab label="Others" {...a11yProps(6)} />
-        </Tabs>
-      </AppBar>
+      
+       <h2>Best Local Food Trucks Near Down Town in Austin</h2>
+  
       <TabPanel value={value} index={0}>
         <TabContents title="American" />
       </TabPanel>
