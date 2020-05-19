@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import { withStykes } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
@@ -10,44 +11,38 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Images from '../Images/nordwood-themes-Tmz8FThN_BE-unsplash.jpg'
+import Images from '../Images/5bad51bc-b238-4e92-a5ca-45e746204482.jpg'
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import Avatar from 'react-avatar';
-
+import IconButton from '@material-ui/core/IconButton';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import tileData from './tileData';
+import GridList from '@material-ui/core/GridList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
-    width: '100%',
-    backgroundColor: theme.palette.background.paper,
-  },
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(0, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    // paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
     display: 'flex',
-    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
   },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
   },
-  cardContent: {
-    flexGrow: 1,
+  title: {
+    color: theme.palette.primary.light,
+  },
+  titleBar: {
+    background:
+      'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
 }));
 
@@ -58,10 +53,14 @@ function HeroUnit() {
       backgroundImage: `url(${Images})`,
       backgroundSize: "100% 100%",
       backgroundRepeat: "no-repeat",
-      height: "100vh",
+      height: "50vh",
       color: "white",
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      justifyContents: "flexStart",
     }
   };
+
 
   const [category, setCategory] = React.useState("");
   const handleCategory = (event) => {
@@ -75,67 +74,53 @@ function HeroUnit() {
 
   return (
     <div className={classes.heroContent} >
-      <Container maxWidth="lg" style={styles.paperContainer}>
-        <Typography variant="h1">
-          Discover the Latest News and Best Food Trucks in Austin
-        </Typography>
-        <Typography variant="h3">
-          Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
-        </Typography>
-        <Container maxWidth="sm">
-          <form className="login-form">
-            <FormControl variant="outlined" >
-              <InputLabel id="select-label-category">Category</InputLabel>
-              <Select className="selectMenu"
-                labelId="select-label-category"
-                id="select-category"
-                value={category}
-                onChange={handleCategory}
-              >
-                <MenuItem value={"American"}>American</MenuItem>
-                <MenuItem value={"Mexican"}>Mexican</MenuItem>
-                <MenuItem value={"BBQ"}>BBQ</MenuItem>
-                <MenuItem value={"Desset"}>Desset</MenuItem>
-                <MenuItem value={"Others"}>Others</MenuItem>
-              </Select>
-            </FormControl>
-            <FormControl variant="outlined" >
-              <InputLabel id="select-label-location">Location</InputLabel>
-              <Select className="selectMenu"
-                labelId="select-label-location"
-                id="select-location"
-                value={location}
-                onChange={handleLocation}
-              >
-                <MenuItem value={"Downtown"}>Downtown</MenuItem>
-                <MenuItem value={"Central Austin"}>Central Austin</MenuItem>
-                <MenuItem value={"East Austin"}>East Austin</MenuItem>
-                <MenuItem value={"West Austin"}>West Austin</MenuItem>
-                <MenuItem value={"South Austin"}>South Austin</MenuItem>
-              
-              </Select>
-            </FormControl>
-            <Button
-              type="submit"
-              className="login-button"
-              variant="contained"
-              color="secondary">
-              Search
-            </Button>
-          </form>
-        </Container>
+      <Container maxWidth="lg" style={styles.paperContainer} >
       </Container>
+      <Typography variant="h1" className="detailHeroText">
+        The Bamboo Skewer
+        </Typography>
+      <Typography variant="h3" className="detailHeroText">
+        BBQ, Asian, American
+        </Typography>
+    </div>
+
+  );
+}
+function Photos() {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
+      <GridList className={classes.gridList} cols={2.5}>
+        {tileData.map((tile) => (
+          <GridListTile key={tile.img}>
+            <img src={tile.img} alt={tile.title} />
+            <GridListTileBar
+              title={tile.title}
+              classes={{
+                root: classes.titleBar,
+                title: classes.title,
+              }}
+              actionIcon={
+                <IconButton aria-label={`star ${tile.title}`}>
+                  <StarBorderIcon className={classes.title} />
+                </IconButton>
+              }
+            />
+          </GridListTile>
+        ))}
+      </GridList>
     </div>
   );
 }
-
-
 function Details() {
   return (
     <Container maxWidth="lg" className="home-container">
 
       <HeroUnit />
-
+      <Typography variant="h3" className="detailHeroText">
+       Photos
+        </Typography>
+      <Photos />
     </Container>
   )
 }
