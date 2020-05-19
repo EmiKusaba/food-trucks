@@ -2,9 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -18,6 +15,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
+// import Autocomplete from '@material-ui/lab/Autocomplete';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,10 +48,6 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
   },
 }));
 
@@ -161,9 +156,9 @@ function HeroUnit() {
         </Typography>
         <Container maxWidth="sm">
           <form className="login-form">
-            <FormControl>
+            <FormControl variant="outlined" >
               <InputLabel id="select-label-category">Category</InputLabel>
-              <Select
+              <Select className="selectMenu"
                 labelId="select-label-category"
                 id="select-category"
                 value={category}
@@ -176,9 +171,9 @@ function HeroUnit() {
                 <MenuItem value={"Others"}>Others</MenuItem>
               </Select>
             </FormControl>
-            <FormControl>
+            <FormControl variant="outlined" >
               <InputLabel id="select-label-location">Location</InputLabel>
-              <Select
+              <Select className="selectMenu"
                 labelId="select-label-location"
                 id="select-location"
                 value={location}
