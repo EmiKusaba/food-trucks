@@ -23,6 +23,8 @@ import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
 import tileData from './tileData';
 import GridList from '@material-ui/core/GridList';
+import Rating from '@material-ui/lab/Rating';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -86,6 +88,19 @@ function HeroUnit() {
 
   );
 }
+
+function SimpleRating() {
+  const [value, setValue] = React.useState(5);
+
+  return (
+    <div>
+      <Box component="fieldset" mb={3} borderColor="transparent">
+        <Typography component="legend">Review (50)</Typography>
+        <Rating name="read-only" value={value} readOnly />
+      </Box>
+      </div>
+      )}
+
 function Photos() {
   const classes = useStyles();
   return (
@@ -117,6 +132,7 @@ function Details() {
     <Container maxWidth="lg" className="home-container">
 
       <HeroUnit />
+      <SimpleRating />
       <Typography variant="h3" className="detailHeroText">
        Photos
         </Typography>
