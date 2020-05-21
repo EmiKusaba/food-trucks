@@ -81,7 +81,7 @@ function HeroUnit() {
       <Typography variant="h1" className="detailHeroText">
         The Bamboo Skewer
         </Typography>
-      <Typography variant="h3" className="detailHeroText">
+      <Typography component="legend" className="detailHeroText">
         BBQ, Asian, American
         </Typography>
     </div>
