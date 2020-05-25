@@ -185,6 +185,9 @@ function Details() {
   const buttons = [
     <ScrollToButton linkRef={refOverView} title="OverView" key="OverView" />,
     <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
+    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
+    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
+    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
 
   ]
 
@@ -195,7 +198,7 @@ function Details() {
       <SimpleRating />
       <DetailNavBar buttons={buttons} />
       <OverView linkRef={refOverView} />
-      <Typography variant="h3" className="detailHeroText">
+      <Typography variant="h1" className="detailHeroText">
         Photos
       </Typography>
       <Photos linkRef={refPhotos} />
