@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { withStykes } from '@material-ui/core/styles';
@@ -63,7 +63,6 @@ function HeroUnit() {
     }
   };
 
-
   const [category, setCategory] = React.useState("");
   const handleCategory = (event) => {
     setCategory(event.target.value);
@@ -89,6 +88,55 @@ function HeroUnit() {
   );
 }
 
+function ScrollToButton(props) {
+  const handleClick = () => {
+    props.linkRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  return (
+    <Button
+      variant="contained"
+      color="primary"
+      onClick={handleClick}
+    >{props.title}</Button>
+  )
+}
+
+function DetailNavBar(props) {
+  return (
+    <div>
+      {props.buttons}
+    </div>
+  )
+}
+
+function OverView(props) {
+  return (
+    <div ref={props.linkRef}>
+      <Typography variant="h1" className="detailHeroText">
+        Overview
+        </Typography>
+      <Typography variant="h3" className="detailHeroText">
+        Mail
+        </Typography>
+      <Typography component="legend" className="detailHeroText">
+        hello@thebambooskewer.com
+        </Typography>
+      <Typography variant="h3" className="detailHeroText">
+        Phone
+        </Typography>
+      <Typography component="legend" className="detailHeroText">
+        (030)818-6755
+        </Typography>
+      <Typography variant="h3" className="detailHeroText">
+        Website
+        </Typography>
+      <Typography component="legend" className="detailHeroText">
+        http://www.thebambooskewer.com
+        </Typography>
+    </div>
+  )
+}
 function SimpleRating() {
   const [value, setValue] = React.useState(5);
 
@@ -98,13 +146,14 @@ function SimpleRating() {
         <Typography component="legend">Review (50)</Typography>
         <Rating name="read-only" value={value} readOnly />
       </Box>
-      </div>
-      )}
+    </div>
+  )
+}
 
-function Photos() {
+function Photos(props) {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
+    <div className={classes.root} ref={props.linkRef}>
       <GridList className={classes.gridList} cols={2.5}>
         {tileData.map((tile) => (
           <GridListTile key={tile.img}>
@@ -128,15 +177,29 @@ function Photos() {
   );
 }
 function Details() {
+
+  const refPhotos = useRef();
+  const refOverView = useRef();
+
+
+  const buttons = [
+    <ScrollToButton linkRef={refOverView} title="OverView" key="OverView" />,
+    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
+
+  ]
+
   return (
     <Container maxWidth="lg" className="home-container">
 
       <HeroUnit />
       <SimpleRating />
+      <DetailNavBar buttons={buttons} />
+      <OverView linkRef={refOverView} />
       <Typography variant="h3" className="detailHeroText">
-       Photos
-        </Typography>
-      <Photos />
+        Photos
+      </Typography>
+      <Photos linkRef={refPhotos} />
+
     </Container>
   )
 }
