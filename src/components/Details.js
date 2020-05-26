@@ -169,7 +169,7 @@ function Details(props) {
 
   const refPhotos = useRef();
   const refOverView = useRef();
-
+  const refSchedule = useRef();
   const id = props.match.params.id
   const shop = props.shops.find(s => s.Id == id)
 
@@ -177,6 +177,7 @@ function Details(props) {
   const buttons = [
     <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
     <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
+    <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" />,
   ]
 
   return (
@@ -187,7 +188,7 @@ function Details(props) {
       <DetailNavBar buttons={buttons} />
       <Overview linkRef={refOverView} />
       <Map address={shop.Address} zoom={16} />
-      <Schedule />
+      <Schedule linkRef={refSchedule} />
       <Typography variant="h1" className="detailHeroText">
         Photos
       </Typography>

@@ -16,7 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 
-function Schedule() {
+function Schedule(props) {
 
 
   const [category, setCategory] = React.useState("");
@@ -30,7 +30,7 @@ function Schedule() {
   };
 
   return (
-    <div className="schedule">
+    <div className="schedule" ref={props.linkRef}>
       
       <Typography variant="h1" className="detailHeroText">
           Schedule
