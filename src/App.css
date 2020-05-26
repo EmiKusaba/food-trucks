@@ -27,3 +27,15 @@
 .detailHeroText{
   text-align:left!important;
 }
+.schedule{
+  display: flex;
+  flex-direction: column;
+  margin: 0 ;
+  width: 50%;
+  padding: 2% 0;
+}
+.schedule-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}

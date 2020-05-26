@@ -13,6 +13,7 @@ import tileData from './tileData';
 import GridList from '@material-ui/core/GridList';
 import Rating from '@material-ui/lab/Rating';
 import Map from "./Map";
+import Schedule from "./Schedule";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -186,6 +187,7 @@ function Details(props) {
       <DetailNavBar buttons={buttons} />
       <Overview linkRef={refOverView} />
       <Map address={shop.Address} zoom={16} />
+      <Schedule />
       <Typography variant="h1" className="detailHeroText">
         Photos
       </Typography>
