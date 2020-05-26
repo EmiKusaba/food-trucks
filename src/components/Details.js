@@ -1,22 +1,10 @@
 import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { withStykes } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
 import Images from '../Images/5bad51bc-b238-4e92-a5ca-45e746204482.jpg'
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import Avatar from 'react-avatar';
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -24,6 +12,7 @@ import GridListTileBar from '@material-ui/core/GridListTileBar';
 import tileData from './tileData';
 import GridList from '@material-ui/core/GridList';
 import Rating from '@material-ui/lab/Rating';
+import Map from "./Map";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -53,7 +42,6 @@ function HeroUnit() {
   const styles = {
     paperContainer: {
       backgroundImage: `url(${Images})`,
-      backgroundSize: "100% 100%",
       backgroundRepeat: "no-repeat",
       height: "50vh",
       color: "white",
@@ -76,13 +64,13 @@ function HeroUnit() {
   return (
     <div className={classes.heroContent} >
       <Container maxWidth="lg" style={styles.paperContainer} >
+        <Typography variant="h1" className="detailHeroText">
+          The Bamboo Skewer
+        </Typography>
+        <Typography component="legend" className="detailHeroText">
+          BBQ, Asian, American
+        </Typography>
       </Container>
-      <Typography variant="h1" className="detailHeroText">
-        The Bamboo Skewer
-        </Typography>
-      <Typography component="legend" className="detailHeroText">
-        BBQ, Asian, American
-        </Typography>
     </div>
 
   );
@@ -110,7 +98,7 @@ function DetailNavBar(props) {
   )
 }
 
-function OverView(props) {
+function Overview(props) {
   return (
     <div ref={props.linkRef}>
       <Typography variant="h1" className="detailHeroText">
@@ -176,19 +164,18 @@ function Photos(props) {
     </div>
   );
 }
-function Details() {
+function Details(props) {
 
   const refPhotos = useRef();
   const refOverView = useRef();
 
+  const id = props.match.params.id
+  const shop = props.shops.find(s => s.Id == id)
+
 
   const buttons = [
-    <ScrollToButton linkRef={refOverView} title="OverView" key="OverView" />,
+    <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
     <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
-    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
-    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
-    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
-
   ]
 
   return (
@@ -197,7 +184,8 @@ function Details() {
       <HeroUnit />
       <SimpleRating />
       <DetailNavBar buttons={buttons} />
-      <OverView linkRef={refOverView} />
+      <Overview linkRef={refOverView} />
+      <Map address={shop.Address} zoom={16} />
       <Typography variant="h1" className="detailHeroText">
         Photos
       </Typography>

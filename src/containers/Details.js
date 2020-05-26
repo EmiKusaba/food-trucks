@@ -4,6 +4,7 @@ import Details from '../components/Details'
 
 const mapStateToProps = (state) => {
   return {
+    shops: state.shops,
   }
 }
 

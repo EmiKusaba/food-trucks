@@ -184,7 +184,7 @@ function HeroUnit() {
                 <MenuItem value={"East Austin"}>East Austin</MenuItem>
                 <MenuItem value={"West Austin"}>West Austin</MenuItem>
                 <MenuItem value={"South Austin"}>South Austin</MenuItem>
-              
+
               </Select>
             </FormControl>
             <Button
@@ -241,9 +241,9 @@ function ScrollableTabsButtonAuto() {
 
   return (
     <div className={classes.root}>
-      
-       <h2>Best Local Food Trucks Near Down Town in Austin</h2>
-  
+
+      <h2>Best Local Food Trucks Near Down Town in Austin</h2>
+
       <TabPanel value={value} index={0}>
         <TabContents title="American" />
       </TabPanel>

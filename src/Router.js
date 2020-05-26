@@ -31,9 +31,8 @@ class Router extends React.Component {
     return (
       <Switch>
         <Route path="/login" component={LogIn} />
-        <Route path="/foo/:id" component={LogIn} />
         <Route path="/search" component={Search} />
-        <Route path="/details" component={Details} />
+        <Route path="/shop/:id" component={Details} />
         <Route path="/" component={Home} />
         {/* {
         <Route path="/favorits" component={Details} /> */}  */}
