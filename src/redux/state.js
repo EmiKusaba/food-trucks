@@ -47,6 +47,32 @@ export default {
       
     },
   ],
+  entrees: [
+    {
+      "Id": 1,
+      "Name": "The Bamboo Skewer",
+      "Price": "512-345-1006",
+    },
+    {
+      "Id": 2,
+      "Name": "BURNET",
+      "Price": "512-538-2697",
+      
+    },
+  ],
+  drinks: [
+    {
+      "Id": 1,
+      "Name": "The Bamboo Skewer",
+      "Price": "512-345-1006",
+    },
+    {
+      "Id": 2,
+      "Name": "BURNET",
+      "Price": "512-538-2697",
+      
+    },
+  ]
 };
 
 

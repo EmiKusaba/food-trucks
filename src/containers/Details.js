@@ -5,6 +5,8 @@ import Details from '../components/Details'
 const mapStateToProps = (state) => {
   return {
     shops: state.shops,
+    entrees: state.entrees,
+    drinks: state.drinks,
   }
 }
 

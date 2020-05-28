@@ -14,6 +14,7 @@ import GridList from '@material-ui/core/GridList';
 import Rating from '@material-ui/lab/Rating';
 import Map from "./Map";
 import Schedule from "./Schedule";
+import Menu from "./Menu";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -52,15 +53,6 @@ function HeroUnit() {
     }
   };
 
-  const [category, setCategory] = React.useState("");
-  const handleCategory = (event) => {
-    setCategory(event.target.value);
-  };
-
-  const [location, setLocation] = React.useState("");
-  const handleLocation = (event) => {
-    setLocation(event.target.value);
-  };
 
   return (
     <div className={classes.heroContent} >
@@ -128,6 +120,7 @@ function Overview(props) {
 }
 function SimpleRating() {
   const [value, setValue] = React.useState(5);
+  if(setValue);
 
   return (
     <div>
@@ -171,8 +164,7 @@ function Details(props) {
   const refOverView = useRef();
   const refSchedule = useRef();
   const id = props.match.params.id
-  const shop = props.shops.find(s => s.Id == id)
-
+  const shop = props.shops.find(s => String(s.Id) === id)
 
   const buttons = [
     <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
@@ -193,7 +185,7 @@ function Details(props) {
         Photos
       </Typography>
       <Photos linkRef={refPhotos} />
-
+      <Menu entrees={props.entrees} drinks={props.drinks} />
     </Container>
   )
 }

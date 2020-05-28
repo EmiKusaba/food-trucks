@@ -116,12 +116,7 @@ function TabContents(props) {
     </Container>
   );
 }
-function a11yProps(index) {
-  return {
-    id: `scrollable-auto-tab-${index}`,
-    'aria-controls': `scrollable-auto-tabpanel-${index}`,
-  };
-}
+
 
 function HeroUnit() {
   const classes = useStyles();
@@ -234,10 +229,9 @@ function HeroUnitWithButton() {
 function ScrollableTabsButtonAuto() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  if(0) {
+    console.log(setValue);
+  }
 
   return (
     <div className={classes.root}>
