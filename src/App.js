@@ -28,7 +28,7 @@ const theme = createMuiTheme({
     fontFamily: "Montserrat",
     h1: {
       fontSize: 40,
-      fontFamily: "Montserrat",
+      fontFamily: "Lato",
       fontWeight: 300,
       color: dark,
       letterSpacing: "0.0075em",
@@ -38,7 +38,17 @@ const theme = createMuiTheme({
     },
     h3: {
       fontSize: 25,
-      fontFamily: "Montserrat",
+      fontFamily: "Lato",
+      fontWeight: 300,
+      color: dark,
+      letterSpacing: "0.0075em",
+      verticalAlign: "middle",
+      alignItems: "center",
+      textAlign: "center"
+    },
+    h5: {
+      fontSize: 18,
+      fontFamily: "Lato",
       fontWeight: 300,
       color: dark,
       letterSpacing: "0.0075em",

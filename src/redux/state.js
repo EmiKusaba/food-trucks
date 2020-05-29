@@ -50,28 +50,61 @@ export default {
   entrees: [
     {
       "Id": 1,
-      "Name": "The Bamboo Skewer",
-      "Price": "512-345-1006",
+      "Name": "Grilled Chiken Rice Bowl",
+      "Price": "$13",
     },
     {
       "Id": 2,
-      "Name": "BURNET",
-      "Price": "512-538-2697",
+      "Name": "Crispy Coconuts Shrimp Rice Bowl",
+      "Price": "$13",
+      
+    },
+    {
+      "Id": 3,
+      "Name": "Vegetarian Side Sampier",
+      "Price": "$13",
+      
+    },
+    {
+      "Id": 4,
+      "Name": "Cheken Teriyaki Meatbowl",
+      "Price": "$13",
+      
+    },
+    {
+      "Id": 5,
+      "Name": "The Special",
+      "Price": "$15",
       
     },
   ],
   drinks: [
     {
       "Id": 1,
-      "Name": "The Bamboo Skewer",
-      "Price": "512-345-1006",
+      "Name": "Diet Coke 12oz",
+      "Price": "$2.00",
     },
     {
       "Id": 2,
-      "Name": "BURNET",
-      "Price": "512-538-2697",
-      
+      "Name": "Sprite 12oz",
+      "Price": "$2.00",
     },
+    {
+      "Id": 3,
+      "Name": "Sprite 12oz",
+      "Price": "$2.00",
+    },
+    {
+      "Id": 4,
+      "Name": "Bottle of Water",
+      "Price": "$2.00",
+    },
+    {
+      "Id": 5,
+      "Name": "Coffee (Hot/Ice)",
+      "Price": "$2.00",
+    },
+    
   ]
 };
 

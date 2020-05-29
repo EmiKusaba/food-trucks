@@ -23,10 +23,10 @@ function Schedule(props) {
   return (
     <div className="schedule" ref={props.linkRef}>
       
-      <Typography variant="h1" className="detailHeroText">
+      <Typography variant="h3" className="detailHeroText">
           Schedule
         </Typography>
-        <Typography variant="h3" className="detailHeroText">
+        <Typography variant="h5" className="detailHeroText">
           Available Time
         </Typography>
         <Container maxWidth="sm">

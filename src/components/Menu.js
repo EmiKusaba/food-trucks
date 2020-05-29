@@ -39,7 +39,7 @@ const MenuTable = (props) => {
 const Menu = (props) => {
   return (
     <Container maxWidth="lg" className="shop-container">
-      <Typography variant="h5" className="detailHeroText">
+      <Typography variant="h3" className="detailHeroText">
         Menu
       </Typography>
       <div className="flex-container">

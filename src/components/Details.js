@@ -46,7 +46,6 @@ function HeroUnit() {
       backgroundImage: `url(${Images})`,
       backgroundRepeat: "no-repeat",
       height: "50vh",
-      color: "white",
       backgroundSize: "cover",
       backgroundPosition: "center",
       justifyContents: "flexStart",
@@ -57,18 +56,24 @@ function HeroUnit() {
   return (
     <div className={classes.heroContent} >
       <Container maxWidth="lg" style={styles.paperContainer} >
-        <Typography variant="h1" className="detailHeroText">
-          The Bamboo Skewer
-        </Typography>
-        <Typography component="legend" className="detailHeroText">
-          BBQ, Asian, American
-        </Typography>
+
       </Container>
     </div>
 
   );
 }
-
+function Title() {
+  return (
+    <div>
+      <Typography variant="h1" className="detailHeroText">
+        The Bamboo Skewer
+        </Typography>
+      <Typography component="legend" className="detailHeroText">
+        BBQ, Asian, American
+        </Typography>
+    </div>
+  )
+}
 function ScrollToButton(props) {
   const handleClick = () => {
     props.linkRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -94,22 +99,22 @@ function DetailNavBar(props) {
 function Overview(props) {
   return (
     <div ref={props.linkRef}>
-      <Typography variant="h1" className="detailHeroText">
+      <Typography variant="h3" className="detailHeroText">
         Overview
         </Typography>
-      <Typography variant="h3" className="detailHeroText">
+      <Typography variant="h5" className="detailHeroText">
         Mail
         </Typography>
       <Typography component="legend" className="detailHeroText">
         hello@thebambooskewer.com
         </Typography>
-      <Typography variant="h3" className="detailHeroText">
+      <Typography variant="h5" className="detailHeroText">
         Phone
         </Typography>
       <Typography component="legend" className="detailHeroText">
         (030)818-6755
         </Typography>
-      <Typography variant="h3" className="detailHeroText">
+      <Typography variant="h5" className="detailHeroText">
         Website
         </Typography>
       <Typography component="legend" className="detailHeroText">
@@ -120,7 +125,7 @@ function Overview(props) {
 }
 function SimpleRating() {
   const [value, setValue] = React.useState(5);
-  if(setValue);
+  if (setValue);
 
   return (
     <div>
@@ -176,12 +181,13 @@ function Details(props) {
     <Container maxWidth="lg" className="home-container">
 
       <HeroUnit />
+      <Title />
       <SimpleRating />
       <DetailNavBar buttons={buttons} />
       <Overview linkRef={refOverView} />
       <Map address={shop.Address} zoom={16} />
       <Schedule linkRef={refSchedule} />
-      <Typography variant="h1" className="detailHeroText">
+      <Typography variant="h3" className="detailHeroText">
         Photos
       </Typography>
       <Photos linkRef={refPhotos} />
