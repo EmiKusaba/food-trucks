@@ -42,7 +42,7 @@ const Menu = (props) => {
       <Typography variant="h3" className="detailHeroText">
         Menu
       </Typography>
-      <div className="flex-container">
+      <div className="flex-container" ref={props.linkRef}>
         <MenuTable title="Entrees" items={props.entrees} />
         <MenuTable title="Drinks" items={props.drinks} />
       </div>

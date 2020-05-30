@@ -15,6 +15,7 @@ import Rating from '@material-ui/lab/Rating';
 import Map from "./Map";
 import Schedule from "./Schedule";
 import Menu from "./Menu";
+import Reviews from "./Reviews";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -168,6 +169,7 @@ function Details(props) {
   const refPhotos = useRef();
   const refOverView = useRef();
   const refSchedule = useRef();
+  const refMenu = useRef();
   const id = props.match.params.id
   const shop = props.shops.find(s => String(s.Id) === id)
 
@@ -175,6 +177,7 @@ function Details(props) {
     <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
     <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
     <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" />,
+    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" />,
   ]
 
   return (
@@ -191,7 +194,8 @@ function Details(props) {
         Photos
       </Typography>
       <Photos linkRef={refPhotos} />
-      <Menu entrees={props.entrees} drinks={props.drinks} />
+      <Menu entrees={props.entrees} drinks={props.drinks} linkRef={refMenu} />
+      <Reviews shopId={shop.Id} user={props.user} reviews={shop.reviews} addReview={props.addReview} />
     </Container>
   )
 }

@@ -4,3 +4,10 @@ export const setUser = (user) => {
     value: user,
   }
 }
+
+export const addReview = (review) => {
+  return {
+    type: "ADD_REVIEW",
+    value: review,
+  }
+}
