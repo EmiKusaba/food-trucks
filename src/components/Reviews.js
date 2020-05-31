@@ -8,23 +8,53 @@ import {
   TableRow,
   Typography,
   TextField,
-  Button
+  Button,
+  Avatar,
+  Box
 } from '@material-ui/core'
 
-const Review = (props) => {
-  const avatar = (props.avatar ? <img src={props.avatar} /> : null);
+import { makeStyles } from '@material-ui/core/styles';
+import Rating from '@material-ui/lab/Rating';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+}));
+
+const UserAvatar = (props) => {
+  const classes = useStyles();
+  const avatar = (props.avatar ? <Avatar src={props.avatar} className={classes.large} /> : null);
   return (
+    <Box>
+      {avatar}
+      {props.username}
+    </Box>
+  )
+}
+
+const Review = (props) => {
+  const classes = useStyles();
+  return (
+    <div className={classes.root}>
     <Table>
       <TableBody>
         <TableRow>
           <TableCell rowSpan={3}>
-            {avatar ? avatar : null}
+            <UserAvatar username={props.username} avatar={props.avatar} />
           </TableCell>
           <TableCell>
             {props.username}
           </TableCell>
           <TableCell>
-            {props.rating}
+            <Rating value={props.rating} readOnly size="small" />
           </TableCell>
         </TableRow>
         <TableRow>
@@ -39,13 +69,11 @@ const Review = (props) => {
         </TableRow>
       </TableBody>
     </Table>
+    </div>
   )
 };
 
 const AddReview = (props) => {
-
-  const avatar = (props.user.avatar ? <img src={props.user.avatar} /> : null);
-
   const [comment, setComment] = React.useState("");
   const [rating, setRating] = React.useState(5);
 
@@ -76,7 +104,7 @@ const AddReview = (props) => {
         <TableBody>
           <TableRow>
             <TableCell rowSpan={2}>
-              {avatar ? avatar : null}
+              <UserAvatar username={props.user.username} avatar={props.user.avatar} />
             </TableCell>
             <TableCell>
               <TextField
@@ -86,10 +114,9 @@ const AddReview = (props) => {
               />
             </TableCell>
             <TableCell>
-              <TextField
-                required
-                onChange={handleRatingChange}
+              <Rating
                 value={rating}
+                onChange={handleRatingChange}
               />
             </TableCell>
           </TableRow>
@@ -111,6 +138,7 @@ const AddReview = (props) => {
 }
 
 const Reviews = (props) => {
+
   return (
     <Container maxWidth="lg" className="shop-container">
       <Typography variant="h3" className="detailHeroText">
@@ -120,7 +148,7 @@ const Reviews = (props) => {
         <AddReview shopId={props.shopId} user={props.user} addReview={props.addReview} />
         {
           props.reviews ? props.reviews.map((review, i) => {
-            return <Review key={i} name={review.username} avatar={review.avatar} rating={review.rating} date={review.date} comment={review.comment} />
+            return <Review key={i} username={review.username} avatar={review.avatar} rating={review.rating} date={review.date} comment={review.comment} />
           }) : null
         }
       </div>

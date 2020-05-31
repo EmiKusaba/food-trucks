@@ -12,6 +12,7 @@ export default {
       "Hours": "11:30am-10:00 pm",
       "Address": "10000 Research Blvd., Ste. 140 Austin, TX 78759",
       "Description": "Established in 1984, Amy's handcrafts artisan super premium ice creams, dairy-free fruit ices and frozen yogurt!",
+      "category": "Asian",
       "reviews": [
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
@@ -35,7 +36,8 @@ export default {
       "Phone": "512-538-2697",
       "Hours": "11:30am-10:00 pm",
       "Address": "5624 Burnet Rd Austin, TX 78756",
-      "Description": "Home of the world famous Mexican Vanilla Ice Cream. With over 350 flavors in rotation your every visit will be a new flavor adventure!"
+      "Description": "Home of the world famous Mexican Vanilla Ice Cream. With over 350 flavors in rotation your every visit will be a new flavor adventure!",
+      "category": "Dessert"
     },
     {
       "Id": 3,
@@ -43,7 +45,8 @@ export default {
       "Phone": "512-480-0673",
       "Hours": "11:30am-10:00 pm",
       "Address": "1012 W. 6th St Austin, TX 78703",
-      "Description": " We've grown up in Austin, Texas and now have shops in Houston and San Antonio!"
+      "Description": " We've grown up in Austin, Texas and now have shops in Houston and San Antonio!",
+      "category": "Mexican"
     },
     {
       "Id": 4,
@@ -51,7 +54,8 @@ export default {
       "Phone": "512-328-2697",
       "Hours": "11:30am-10:00 pm",
       "Address": "2805 Bee Caves Rd. #416 Austin, TX 78746",
-      "Description": "Explore your favorite flavors and the fun of Amy's Ice Creams."
+      "Description": "Explore your favorite flavors and the fun of Amy's Ice Creams.",
+      "category": "BBQ"
     },
     {
       "Id": 5,
@@ -59,9 +63,8 @@ export default {
       "Phone": "512-282-2697",
       "Hours": "11:30am-10:00 pm",
       "Address": "9600 S. IH-35, Building C Ste. 400 Austin, TX 78748",
-      "Description": "Your favorite Amy’s flavors between delicious homemade cake from Baked by Amy’s hand decorated just for you. Find the perfect size, including sheet cakes, for your epic celebration. Party on!"
-
-
+      "Description": "Your favorite Amy’s flavors between delicious homemade cake from Baked by Amy’s hand decorated just for you. Find the perfect size, including sheet cakes, for your epic celebration. Party on!",
+      "category": "American"
     },
   ],
   entrees: [

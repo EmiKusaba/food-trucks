@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { Container } from '@material-ui/core';
+import { Container, Link } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
@@ -16,6 +16,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useHistory } from "react-router-dom";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -51,65 +52,35 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`scrollable-auto-tabpanel-${index}`}
-      aria-labelledby={`scrollable-auto-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function TabContents(props) {
+function Results(props) {
   const classes = useStyles();
-
+  const history = useHistory();
+  const handleClick = (event, id) => {
+    event.preventDefault();
+    history.push(`/shop/${id}`);
+  }
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <Grid container spacing={4}>
-        {cards.map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image="https://source.unsplash.com/random"
-                title="Image title"
-              />
-              <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Heading
-                    </Typography>
-                <Typography >
-                  This is a media card. You can use this section to describe the content.
-                    </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small" color="secondary">
-                  View
-                    </Button>
-                <Button size="small" color="secondary">
-                  Edit
-                    </Button>
-              </CardActions>
-            </Card>
+        {props.shops.map((shop, i) => (
+          <Grid item key={i} xs={12} sm={6} md={4}>
+            <button onClick={(event) => handleClick(event, shop.Id)} style={{ "border": "none" }}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image="https://source.unsplash.com/random"
+                  title="Image title"
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {shop.Name}
+                  </Typography>
+                  <Typography>
+                    {shop.Description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </button>
           </Grid>
         ))}
       </Grid>
@@ -118,7 +89,7 @@ function TabContents(props) {
 }
 
 
-function HeroUnit() {
+function HeroUnit(props) {
   const classes = useStyles();
   const styles = {
     paperContainer: {
@@ -130,9 +101,8 @@ function HeroUnit() {
     }
   };
 
-  const [category, setCategory] = React.useState("");
   const handleCategory = (event) => {
-    setCategory(event.target.value);
+    props.setCategory(event.target.value);
   };
 
   const [location, setLocation] = React.useState("");
@@ -156,13 +126,14 @@ function HeroUnit() {
               <Select className="selectMenu"
                 labelId="select-label-category"
                 id="select-category"
-                value={category}
+                value={props.category}
                 onChange={handleCategory}
               >
                 <MenuItem value={"American"}>American</MenuItem>
+                <MenuItem value={"Asian"}>Asian</MenuItem>
                 <MenuItem value={"Mexican"}>Mexican</MenuItem>
                 <MenuItem value={"BBQ"}>BBQ</MenuItem>
-                <MenuItem value={"Desset"}>Desset</MenuItem>
+                <MenuItem value={"Dessert"}>Dessert</MenuItem>
                 <MenuItem value={"Others"}>Others</MenuItem>
               </Select>
             </FormControl>
@@ -212,12 +183,12 @@ function HeroUnitWithButton() {
             <Grid item>
               <Button variant="contained" color="primary">
                 Download on the App Store
-                  </Button>
+              </Button>
             </Grid>
             <Grid item>
               <Button variant="outlined" color="primary">
                 Get it on Google Play
-                  </Button>
+              </Button>
             </Grid>
           </Grid>
         </div>
@@ -226,52 +197,21 @@ function HeroUnitWithButton() {
   );
 }
 
-function ScrollableTabsButtonAuto() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  if(0) {
-    console.log(setValue);
+function Search(props) {
+  const getShops = (category) => {
+    return props.shops.filter((shop) => {
+      return shop.category === category;
+    });
   }
 
-  return (
-    <div className={classes.root}>
+  const [category, setCategory] = React.useState("American");
+  const shops = getShops(category);
 
-      <h2>Best Local Food Trucks Near Down Town in Austin</h2>
-
-      <TabPanel value={value} index={0}>
-        <TabContents title="American" />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <TabContents title="Mexican" />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <TabContents title="BBQ" />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <TabContents title="Asian" />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <TabContents title="Italian" />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <TabContents title="Dessert" />
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        <TabContents title="Others" />
-      </TabPanel>
-    </div>
-  );
-}
-
-
-function Search() {
   return (
     <Container maxWidth="lg" className="home-container">
-
-      <HeroUnit />
-      <ScrollableTabsButtonAuto />
+      <HeroUnit category={category} setCategory={setCategory} />
+      <Results shops={shops} />
       <HeroUnitWithButton />
-
     </Container>
   )
 }

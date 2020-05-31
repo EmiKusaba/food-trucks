@@ -4,10 +4,10 @@ import Search from '../components/Search'
 
 const mapStateToProps = (state) => {
   return {
+    shops: state.shops,
   }
 }
 
-// add mapDispatchToProps function here
 const mapDispatchToProps = (dispatch) => {
   return {
   }
