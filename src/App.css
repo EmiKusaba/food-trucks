@@ -39,3 +39,10 @@
   flex-direction: column;
   width: 50%;
 }
+.firstSection{
+  display: flex;
+  padding: 2%;
+}
+.scrollButton{
+  padding: 1% !important;
+}

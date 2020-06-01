@@ -38,6 +38,9 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
+  button: {
+    margin: theme.spacing(1),
+  }
 }));
 
 function HeroUnit() {
@@ -83,8 +86,9 @@ function ScrollToButton(props) {
   return (
     <Button
       variant="contained"
-      color="primary"
+      color="secondary"
       onClick={handleClick}
+      padding="5px"
     >{props.title}</Button>
   )
 }
@@ -127,12 +131,13 @@ function Overview(props) {
 function SimpleRating() {
   const [value, setValue] = React.useState(5);
   if (setValue);
+  const classes = useStyles();
 
   return (
-    <div>
+    <div className={classes.root}>
       <Box component="fieldset" mb={3} borderColor="transparent">
-        <Typography component="legend">Review (50)</Typography>
         <Rating name="read-only" value={value} readOnly />
+        <Typography component="legend">Review (50)</Typography>
       </Box>
     </div>
   )
@@ -140,6 +145,7 @@ function SimpleRating() {
 
 function Photos(props) {
   const classes = useStyles();
+
   return (
     <div className={classes.root} ref={props.linkRef}>
       <GridList className={classes.gridList} cols={2.5}>
@@ -170,23 +176,29 @@ function Details(props) {
   const refOverView = useRef();
   const refSchedule = useRef();
   const refMenu = useRef();
+  const refReview = useRef();
   const id = props.match.params.id
   const shop = props.shops.find(s => String(s.Id) === id)
 
   const buttons = [
-    <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
-    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
-    <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" />,
-    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" />,
+
+    <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" className="scrollButton"/>,
+    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" className="scrollButton"/>,
+    <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" className="scrollButton" />,
+    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" className="scrollButton"/>,
+    <ScrollToButton linkRef={refReview} title="Review" key="Review" className="scrollButton"/>,
+   
   ]
 
   return (
     <Container maxWidth="lg" className="home-container">
 
       <HeroUnit />
+      <div className="firstSection">
       <Title />
       <SimpleRating />
-      <DetailNavBar buttons={buttons} />
+      </div>
+      <DetailNavBar buttons={buttons} className="scrollButton"/>
       <Overview linkRef={refOverView} />
       <Map address={shop.Address} zoom={16} />
       <Schedule linkRef={refSchedule} />
@@ -195,7 +207,7 @@ function Details(props) {
       </Typography>
       <Photos linkRef={refPhotos} />
       <Menu entrees={props.entrees} drinks={props.drinks} linkRef={refMenu} />
-      <Reviews shopId={shop.Id} user={props.user} reviews={shop.reviews} addReview={props.addReview} />
+      <Reviews shopId={shop.Id} user={props.user} reviews={shop.reviews} addReview={props.addReview} linkRef={refReview} />
     </Container>
   )
 }

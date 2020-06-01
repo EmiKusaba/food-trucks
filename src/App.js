@@ -9,6 +9,7 @@ import store from './redux/store'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
 import blue from '@material-ui/core/colors/blue';
+import Button from '@material-ui/core/Button';
 
 const primary = orange[500];
 const secondary = blue[500];
@@ -55,7 +56,7 @@ const theme = createMuiTheme({
       verticalAlign: "middle",
       alignItems: "center",
       textAlign: "center"
-    }
+    },
   }
 },
 )
