@@ -16,6 +16,7 @@ import Map from "./Map";
 import Schedule from "./Schedule";
 import Menu from "./Menu";
 import Reviews from "./Reviews";
+import { spacing } from '@material-ui/system';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -38,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
-  button: {
-    margin: theme.spacing(1),
+  myButton: {
+    margin: 5,
   }
 }));
 
@@ -82,14 +83,19 @@ function ScrollToButton(props) {
   const handleClick = () => {
     props.linkRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }
+  const classes = useStyles();
+
 
   return (
+
     <Button
       variant="contained"
       color="secondary"
       onClick={handleClick}
       padding="5px"
+      style={{ margin: "10px", }}
     >{props.title}</Button>
+
   )
 }
 
@@ -182,12 +188,12 @@ function Details(props) {
 
   const buttons = [
 
-    <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" className="scrollButton"/>,
-    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" className="scrollButton"/>,
-    <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" className="scrollButton" />,
-    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" className="scrollButton"/>,
-    <ScrollToButton linkRef={refReview} title="Review" key="Review" className="scrollButton"/>,
-   
+    <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
+    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
+    <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" />,
+    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" className="scrollButton" />,
+    <ScrollToButton linkRef={refReview} title="Review" key="Review" />,
+
   ]
 
   return (
@@ -195,10 +201,10 @@ function Details(props) {
 
       <HeroUnit />
       <div className="firstSection">
-      <Title />
-      <SimpleRating />
+        <Title />
+        <SimpleRating />
       </div>
-      <DetailNavBar buttons={buttons} className="scrollButton"/>
+      <DetailNavBar buttons={buttons} className="scrollButton" />
       <Overview linkRef={refOverView} />
       <Map address={shop.Address} zoom={16} />
       <Schedule linkRef={refSchedule} />

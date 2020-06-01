@@ -133,7 +133,7 @@ function HeroUnit() {
       backgroundImage: `url(${Images})`,
       backgroundSize: "100% 100%",
       backgroundRepeat: "no-repeat",
-      height: "100vh",
+      height: "50vh",
       color: "white",
     }
   };
