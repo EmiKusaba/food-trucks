@@ -131,9 +131,10 @@ function HeroUnit() {
   const styles = {
     paperContainer: {
       backgroundImage: `url(${Images})`,
-      backgroundSize: "100% 100%",
       backgroundRepeat: "no-repeat",
-      height: "50vh",
+      backgroundSize: "100% auto",
+      backgroundPosition: "center 70%",
+      height: "100vh",
       color: "white",
     }
   };

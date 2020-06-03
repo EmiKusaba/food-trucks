@@ -17,6 +17,9 @@ import Schedule from "./Schedule";
 import Menu from "./Menu";
 import Reviews from "./Reviews";
 import { spacing } from '@material-ui/system';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,8 +42,8 @@ const useStyles = makeStyles((theme) => ({
     background:
       'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
   },
-  myButton: {
-    margin: 5,
+  scrollButton: {
+    minWidth: '20%',
   }
 }));
 
@@ -79,31 +82,87 @@ function Title() {
     </div>
   )
 }
+
+// function a11yProps(index) {
+//   return {
+//     id: `scrollable-auto-tab-${index}`,
+//     'aria-controls': `scrollable-auto-tabpanel-${index}`,
+//   };
+// }
+// function ScrollableTabsButtonAuto(props) {
+//   // const classes = useStyles();
+//   const [value, setValue] = React.useState(0);
+//   const handleClick = () => {
+//     props.linkRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+//   }
+//   const classes = useStyles();
+
+//   const handleChange = (event, newValue) => {
+//     setValue(newValue);
+//   };
+
+//   return (
+//     <div className={classes.root}>
+//       <AppBar position="static" color="default">
+//         <Tabs
+//           value={value}
+//           onChange={handleChange}
+//           indicatorColor="primary"
+//           textColor="primary"
+//           variant="scrollable"
+//           scrollButtons="auto"
+//           aria-label="scrollable auto tabs example"
+         
+//         > {props.title}
+//           <Tab label="Overview" {...a11yProps(0)} />
+//           <Tab label="Photos" {...a11yProps(1)} />
+//           <Tab label="Schedule" {...a11yProps(2)} />
+//           <Tab label="Menu" {...a11yProps(3)} />
+//           <Tab label="Review" {...a11yProps(4)} />
+//         </Tabs>
+//       </AppBar>
+//       <TabPanel value={value} index={0}>
+//         <TabContents title="Overview" />
+//       </TabPanel>
+//       <TabPanel value={value} index={1}>
+//         <TabContents title="Photos" />
+//       </TabPanel>
+//       <TabPanel value={value} index={2}>
+//         <TabContents title="Schedule" />
+//       </TabPanel>
+//       <TabPanel value={value} index={3}>
+//         <TabContents title="Menu" />
+//       </TabPanel>
+//       <TabPanel value={value} index={4}>
+//         <TabContents title="Review" />
+//       </TabPanel>
+//     </div>
+//   );
+// }
+
 function ScrollToButton(props) {
   const handleClick = () => {
     props.linkRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
   }
   const classes = useStyles();
-
-
   return (
-
     <Button
-      variant="contained"
-      color="secondary"
+      classes={{root: classes.scrollButton}}
       onClick={handleClick}
       padding="5px"
-      style={{ margin: "10px", }}
+      disableElevation
     >{props.title}</Button>
 
   )
 }
 
 function DetailNavBar(props) {
+  const classes = useStyles();
+
   return (
-    <div>
+    <Box className={classes.root}>
       {props.buttons}
-    </div>
+    </Box>
   )
 }
 
@@ -191,7 +250,7 @@ function Details(props) {
     <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
     <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
     <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" />,
-    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" className="scrollButton" />,
+    <ScrollToButton linkRef={refMenu} title="Menu" key="menu"  />,
     <ScrollToButton linkRef={refReview} title="Review" key="Review" />,
 
   ]
