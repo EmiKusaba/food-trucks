@@ -134,7 +134,9 @@ function HeroUnit() {
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
       backgroundPosition: "center 70%",
-      height: "100vh",
+      height: "50vh",
+      minHeight: "100px",
+      maxHeight: "300px",
       color: "white",
     }
   };

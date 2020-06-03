@@ -94,10 +94,14 @@ function HeroUnit(props) {
   const styles = {
     paperContainer: {
       backgroundImage: `url(${Images})`,
-      backgroundSize: "100% 100%",
       backgroundRepeat: "no-repeat",
-      height: "100vh",
+      backgroundSize: "100% auto",
+      backgroundPosition: "center 70%",
+      // height: "60vh",
+      minHeight: "100px",
+      maxHeight: "500px",
       color: "white",
+      padding: '20px',
     }
   };
 
@@ -119,7 +123,7 @@ function HeroUnit(props) {
         <Typography variant="h3">
           Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
         </Typography>
-        <Container maxWidth="sm">
+        <Container  maxWidth="sm">
           <form className="login-form">
             <FormControl variant="outlined" >
               <InputLabel id="select-label-category">Category</InputLabel>
