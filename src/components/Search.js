@@ -97,7 +97,7 @@ function HeroUnit(props) {
       backgroundRepeat: "no-repeat",
       backgroundSize: "100% auto",
       backgroundPosition: "center 70%",
-      // height: "60vh",
+      height: "60vh",
       minHeight: "100px",
       maxHeight: "500px",
       color: "white",
@@ -116,7 +116,7 @@ function HeroUnit(props) {
 
   return (
     <div className={classes.heroContent} >
-      <Container maxWidth="lg" style={styles.paperContainer}>
+      <Container maxWidth="lg" style={styles.paperContainer} className ="top-container">
         <Typography variant="h1">
           Discover the Latest News and Best Food Trucks in Austin
         </Typography>
