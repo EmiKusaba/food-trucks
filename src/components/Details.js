@@ -47,11 +47,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function HeroUnit() {
+function HeroUnit(props) {
   const classes = useStyles();
   const styles = {
     paperContainer: {
-      backgroundImage: `url(${Images})`,
+      backgroundImage: `url(${props.shop.banner})`,
       backgroundRepeat: "no-repeat",
       height: "70vh",
       backgroundSize: "cover",
@@ -70,14 +70,14 @@ function HeroUnit() {
 
   );
 }
-function Title() {
+function Title(props) {
   return (
     <div>
       <Typography variant="h1" className="detailHeroText">
-        The Bamboo Skewer
+        {props.shop.Name}
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        BBQ, Asian, American
+        {props.shop.category}
         </Typography>
     </div>
   )
@@ -120,19 +120,19 @@ function Overview(props) {
         Mail
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        hello@thebambooskewer.com
+        {props.shop.email}
         </Typography>
       <Typography variant="h5" className="detailHeroText">
         Phone
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        (030)818-6755
+        {props.shop.Phone}
         </Typography>
       <Typography variant="h5" className="detailHeroText">
         Website
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        http://www.thebambooskewer.com
+        {props.shop.Website}
         </Typography>
     </div>
   )
@@ -202,13 +202,13 @@ function Details(props) {
   return (
     <Container maxWidth="lg" className="home-container">
 
-      <HeroUnit />
+      <HeroUnit shop={shop} />
       <div className="firstSection">
-        <Title />
+        <Title shop={shop}/>
         <SimpleRating />
       </div>
       <DetailNavBar buttons={buttons} className="scrollButton" />
-      <Overview linkRef={refOverView} />
+      <Overview linkRef={refOverView} shop={shop}/>
       <Typography variant="h3" className="detailHeroText">
         Map
       </Typography>

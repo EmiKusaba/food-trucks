@@ -60,11 +60,14 @@ export default {
     {
       "Id": 5,
       "Name": "THE GROVE",
+      "Website": "www.thegroveshop.com",
+      "email": "shop@thegrove.com",
       "Phone": "512-282-2697",
       "Hours": "11:30am-10:00 pm",
       "Address": "9600 S. IH-35, Building C Ste. 400 Austin, TX 78748",
       "Description": "Your favorite Amy’s flavors between delicious homemade cake from Baked by Amy’s hand decorated just for you. Find the perfect size, including sheet cakes, for your epic celebration. Party on!",
-      "category": "American"
+      "category": "American",
+      "banner": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
     },
   ],
   entrees: [
