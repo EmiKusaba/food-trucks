@@ -140,7 +140,7 @@ const AddReview = (props) => {
 const Reviews = (props) => {
 
   return (
-    <Container maxWidth="lg" className="shop-container">
+    <Container maxWidth="lg" className="shop-container" ref={props.linkRef}>
       <Typography variant="h3" className="detailHeroText">
         Review
       </Typography>

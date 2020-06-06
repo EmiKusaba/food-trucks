@@ -146,7 +146,7 @@ function HeroUnit() {
         <Typography variant="h1">
           Discover the Latest News and Best Food Trucks in Austin
           </Typography>
-        <Typography variant="h3">
+        <Typography variant="h4">
           Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
             </Typography>
       </Container>

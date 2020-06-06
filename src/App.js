@@ -25,7 +25,7 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: "Montserrat",
+    fontFamily: "Lato",
     h1: {
       fontSize: 40,
       fontFamily: "Lato",
@@ -34,20 +34,45 @@ const theme = createMuiTheme({
       letterSpacing: "0.0075em",
       verticalAlign: "middle",
       alignItems: "center",
-      textAlign: "center"
+      textAlign: "center",
+      backgroundColor: 'rgba(255,255,255,0.5)',
     },
-    h3: {
-      fontSize: 25,
+    h2: {
+      fontSize: 35,
       fontFamily: "Lato",
       fontWeight: 300,
       color: dark,
       letterSpacing: "0.0075em",
       verticalAlign: "middle",
       alignItems: "center",
-      textAlign: "center"
+      textAlign: "center",
+      
+
+    },
+    h3: {
+      fontSize: 27,
+      fontFamily: "Lato",
+      fontWeight: 300,
+      color: dark,
+      letterSpacing: "0.0075em",
+      verticalAlign: "middle",
+      alignItems: "center",
+      textAlign: "center",
+      padding: "1rem"
+    },
+    h4: {
+      fontSize: 20,
+      fontFamily: "Lato",
+      fontWeight: 300,
+      color: dark,
+      letterSpacing: "0.0075em",
+      verticalAlign: "middle",
+      alignItems: "center",
+      textAlign: "center",
+      backgroundColor: 'rgba(255,255,255,0.5)',
     },
     h5: {
-      fontSize: 18,
+      fontSize: 17,
       fontFamily: "Lato",
       fontWeight: 300,
       color: dark,
