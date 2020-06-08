@@ -32,21 +32,57 @@ export default {
     },
     {
       "Id": 2,
-      "Name": "BURNET",
-      "Phone": "512-538-2697",
+      "Name": "Pangea Lounge",
+      "Phone": "512-507-9459",
+      "Website": "https://www.facebook.com/PangeaLoungeATX/",
       "Hours": "11:30am-10:00 pm",
-      "Address": "5624 Burnet Rd Austin, TX 78756",
-      "Description": "Home of the world famous Mexican Vanilla Ice Cream. With over 350 flavors in rotation your every visit will be a new flavor adventure!",
-      "category": "Dessert"
+      "Address": " 1211 E 6th St. Austin, TX 78702",
+      "Description": "The generously portioned falafel over rice plate ($7) at Halal Time includes six pieces of falafel served over basmati rice, with a side salad, chickpeas, pickles, red onion, tahini, house-made tzatziki, and hot sauce; Aimee’s Super Fantazo fries ($9.49), seasoned curly fries topped with feta cheese, cucumbers, tomato, olive, tzatziki sauce, chili garlic sauce, and gyro meat.",
+      "category": "Mexican",
+      "banner": "src/Images/crop.jpeg",
+      "reviews": [
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Asher Streets",
+          "rating": 5,
+          "date": "14 Aug 2018",
+          "comment": "Hidden gem!  Solid food offerings from around the globe, with live music & a positive, family-friendly, diverse atmosphere!."
+        },
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Pat Scales",
+          "rating": 1,
+          "date": "14 Aug 2018",
+          "comment": "Tried twice and nothing was ever open for lunch despite being advertised as they were."
+        },
+      ]
     },
     {
       "Id": 3,
-      "Name": "6TH STREET",
+      "Name": "SOURSOP PAN-ASIAN FOOD TRUCK",
+      "Website":"http://www.soursopaustin.com/",
       "Phone": "512-480-0673",
-      "Hours": "11:30am-10:00 pm",
-      "Address": "1012 W. 6th St Austin, TX 78703",
-      "Description": " We've grown up in Austin, Texas and now have shops in Houston and San Antonio!",
-      "category": "Mexican"
+      "Hours": "closed monday | open for lunch & dinner tuesday - sunday",
+      "Address": "440 East Saint Elmo Road, G-2, Austin, TX 78745 ",
+      "Description": " It’s truly the most unique food truck I can find in Austin! The Pan-Asian fusion fare makes the menu hard to define, but expect things like chongqing chicken with numbing sichuan peppercorns, and tots with togarashi, bonito, furikake and a tsukemen dipping broth.",
+      "category": "Asian",
+      "banner": "../Images//Users/emi/Documents/DevFolder/ACA_JS411/Graduation_App/food-trucks/src/Images/best-austin-food-trucks-7-724x1024.jpg",
+      "reviews": [
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Erik S",
+          "rating": 5,
+          "date": "14 Aug 2018",
+          "comment": "Definitely the wilder side in dishes, can't get enough of the different burgers they put out.  Order some Tots though if you're not that hungry."
+        },
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Easton Dillehay",
+          "rating": 5,
+          "date": "14 Aug 2018",
+          "comment": "The food here is always EXCELLENT! Of course it pairs best with an ice cold brew from St. Elmo’s, but we always make it a point to hit up Soursop when we’re at the bar. It’s a fantastically delicious choice."
+        },
+      ]
     },
     {
       "Id": 4,
