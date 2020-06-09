@@ -21,6 +21,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
+const getImage = (path) => {
+  const images = require.context("../Images", true);
+  return images(`./${path}`);
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,10 +52,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HeroUnit(props) {
+  const bannerImage = getImage(props.shop.banner);
   const classes = useStyles();
   const styles = {
     paperContainer: {
-      backgroundImage: `url(${props.shop.banner})`,
+      backgroundImage: `url(${bannerImage})`,
       backgroundRepeat: "no-repeat",
       height: "70vh",
       backgroundSize: "cover",

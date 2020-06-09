@@ -39,7 +39,7 @@ export default {
       "Address": " 1211 E 6th St. Austin, TX 78702",
       "Description": "The generously portioned falafel over rice plate ($7) at Halal Time includes six pieces of falafel served over basmati rice, with a side salad, chickpeas, pickles, red onion, tahini, house-made tzatziki, and hot sauce; Aimee’s Super Fantazo fries ($9.49), seasoned curly fries topped with feta cheese, cucumbers, tomato, olive, tzatziki sauce, chili garlic sauce, and gyro meat.",
       "category": "Mexican",
-      "banner": "src/Images/crop.jpeg",
+      "banner": "crop.jpeg",
       "reviews": [
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
@@ -66,7 +66,7 @@ export default {
       "Address": "440 East Saint Elmo Road, G-2, Austin, TX 78745 ",
       "Description": " It’s truly the most unique food truck I can find in Austin! The Pan-Asian fusion fare makes the menu hard to define, but expect things like chongqing chicken with numbing sichuan peppercorns, and tots with togarashi, bonito, furikake and a tsukemen dipping broth.",
       "category": "Asian",
-      "banner": "../Images//Users/emi/Documents/DevFolder/ACA_JS411/Graduation_App/food-trucks/src/Images/best-austin-food-trucks-7-724x1024.jpg",
+      "banner": "best-austin-food-trucks-7-724x1024.jpg",
       "reviews": [
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
@@ -91,7 +91,8 @@ export default {
       "Hours": "11:30am-10:00 pm",
       "Address": "2805 Bee Caves Rd. #416 Austin, TX 78746",
       "Description": "Explore your favorite flavors and the fun of Amy's Ice Creams.",
-      "category": "BBQ"
+      "category": "BBQ",
+      "banner": "lala.jpg"
     },
     {
       "Id": 5,
