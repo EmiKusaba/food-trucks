@@ -124,7 +124,7 @@ function Overview(props) {
         Mail
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        {props.shop.email}
+        {props.shop.Mail}
         </Typography>
       <Typography variant="h5" className="detailHeroText">
         Phone

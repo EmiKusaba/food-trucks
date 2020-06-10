@@ -8,12 +8,13 @@ export default {
     {
       "Id": 1,
       "Name": "The Bamboo Skewer",
+      "Mail": "bambooskewer@gmail.com",
       "Phone": "512-345-1006",
       "Hours": "11:30am-10:00 pm",
       "Address": "10000 Research Blvd., Ste. 140 Austin, TX 78759",
       "Description": "Established in 1984, Amy's handcrafts artisan super premium ice creams, dairy-free fruit ices and frozen yogurt!",
       "category": "Asian",
-      "banner": "crop.jpeg",
+      "banner": "5bad51bc-b238-4e92-a5ca-45e746204482.jpg",
       "reviews": [
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
@@ -40,25 +41,25 @@ export default {
           "Id": 2,
           "Name": "Crispy Coconuts Shrimp Rice Bowl",
           "Price": "$13",
-    
+
         },
         {
           "Id": 3,
           "Name": "Vegetarian Side Sampier",
           "Price": "$13",
-    
+
         },
         {
           "Id": 4,
           "Name": "Cheken Teriyaki Meatbowl",
           "Price": "$13",
-    
+
         },
         {
           "Id": 5,
           "Name": "The Special",
           "Price": "$15",
-    
+
         },
       ],
       drinks: [
@@ -108,14 +109,14 @@ export default {
     },
     {
       "Id": 2,
-      "Name": "Pangea Lounge",
+      "Name": "VERACRUZ ALL-NATURAL TACOS",
       "Phone": "512-507-9459",
       "Website": "https://www.facebook.com/PangeaLoungeATX/",
-      "Hours": "11:30am-10:00 pm",
-      "Address": " 1211 E 6th St. Austin, TX 78702",
+      "Hours": " Mon-Thurs, 8am-3pm; Fri-Sun, 8am-8pm",
+      "Address": "2505 Webberville Rd, Austin, TX 78702",
       "Description": "The generously portioned falafel over rice plate ($7) at Halal Time includes six pieces of falafel served over basmati rice, with a side salad, chickpeas, pickles, red onion, tahini, house-made tzatziki, and hot sauce; Aimee’s Super Fantazo fries ($9.49), seasoned curly fries topped with feta cheese, cucumbers, tomato, olive, tzatziki sauce, chili garlic sauce, and gyro meat.",
       "category": "Mexican",
-      "banner": "crop.jpeg",
+      "banner": "best-austin-food-trucks-17-1024x1024.jpg",
       "reviews": [
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
@@ -135,15 +136,79 @@ export default {
       entrees: [
         {
           "Id": 1,
-          "Name": "Grilled Chiken Rice Bowl",
-          "Price": "$13",
+          "Name": "Migas Originales",
+          "Price": "$3.50",
+        },
+        {
+          "Id": 2,
+          "Name": "Migas Originales",
+          "Price": "$4.00",
+        },
+        {
+          "Id": 3,
+          "Name": "La Reyna",
+          "Price": "$4.00",
+        },
+        {
+          "Id": 4,
+          "Name": "El Tradicional",
+          "Price": "$3.50",
+        },
+        {
+          "Id": 5,
+          "Name": "Bean and Cheese",
+          "Price": "$2.75",
         },
       ],
+      drinks: [
+        {
+          "Id": 1,
+          "Name": "Good Morning Juice(Orange juice, carrot, ginger)",
+          "Price": "$4.25",
+        },
+        {
+          "Id": 2,
+          "Name": "La Bomba Juice(Orange juice, pineapple, spinach)",
+          "Price": "$4.25",
+        },
+        {
+          "Id": 3,
+          "Name": "Nice One Juice(Orange juice, pineapple, grapes)",
+          "Price": "$4.25",
+        },
+        {
+          "Id": 4,
+          "Name": "Mr. Verde Juice",
+          "Price": "$4.25",
+        },
+        {
+          "Id": 5,
+          "Name": "La Jarocha Juice(apple juice, orange juice, carrot, beet)",           
+          "Price": "$4.25",
+        },
+      ],
+      "photos": [
+        {
+          "img": "cropped-migas_2.jpg",
+          "title": "Authentic Mexan Food",
+          "author": "Varacruz All Natural"
+        },
+        {
+          "img": "29683331_2141368172762737_8803756012391628589_n.png",
+          "title": "Steam Dumplings",
+          "author": "author"
+        },
+        {
+          "img": "27867245_2115145832051638_1319394816153773262_n.jpg",
+          "title": "Lunch",
+          "author": "author"
+        }
+      ]
     },
     {
       "Id": 3,
       "Name": "SOURSOP PAN-ASIAN FOOD TRUCK",
-      "Website":"http://www.soursopaustin.com/",
+      "Website": "http://www.soursopaustin.com/",
       "Phone": "512-480-0673",
       "Hours": "closed monday | open for lunch & dinner tuesday - sunday",
       "Address": "440 East Saint Elmo Road, G-2, Austin, TX 78745 ",
@@ -170,7 +235,7 @@ export default {
     {
       "Id": 4,
       "Name": "LUKE’S INSIDE OUT FOOD TRUCK",
-      "Website":"https://www.lukesinsideout.com/",
+      "Website": "https://www.lukesinsideout.com/",
       "Phone": "512-589-8883",
       "Hours": "Monday:\
       5 p.m. – 9 p.m.\
