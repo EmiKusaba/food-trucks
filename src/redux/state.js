@@ -13,6 +13,7 @@ export default {
       "Address": "10000 Research Blvd., Ste. 140 Austin, TX 78759",
       "Description": "Established in 1984, Amy's handcrafts artisan super premium ice creams, dairy-free fruit ices and frozen yogurt!",
       "category": "Asian",
+      "banner": "crop.jpeg",
       "reviews": [
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
@@ -28,6 +29,81 @@ export default {
           "date": "14 Aug 2018",
           "comment": "Alright, the new management has definitely changed the source of the Skewer.  Tonight, we went back and I would say that I was disappointed.  The prices are still good (although raised a little), and the skewer is still good, but no longer excellent. "
         },
+      ],
+      entrees: [
+        {
+          "Id": 1,
+          "Name": "Grilled Chiken Rice Bowl",
+          "Price": "$13",
+        },
+        {
+          "Id": 2,
+          "Name": "Crispy Coconuts Shrimp Rice Bowl",
+          "Price": "$13",
+    
+        },
+        {
+          "Id": 3,
+          "Name": "Vegetarian Side Sampier",
+          "Price": "$13",
+    
+        },
+        {
+          "Id": 4,
+          "Name": "Cheken Teriyaki Meatbowl",
+          "Price": "$13",
+    
+        },
+        {
+          "Id": 5,
+          "Name": "The Special",
+          "Price": "$15",
+    
+        },
+      ],
+      drinks: [
+        {
+          "Id": 1,
+          "Name": "Diet Coke 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 2,
+          "Name": "Sprite 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 3,
+          "Name": "Sprite 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 4,
+          "Name": "Bottle of Water",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 5,
+          "Name": "Coffee (Hot/Ice)",
+          "Price": "$2.00",
+        },
+      ],
+      "photos": [
+        {
+          "img": "26165822_2092491927650362_4410100033640406332_n.png",
+          "title": "Fried spring rolls",
+          "author": "author"
+        },
+        {
+          "img": "29683331_2141368172762737_8803756012391628589_n.png",
+          "title": "Steam Dumplings",
+          "author": "author"
+        },
+        {
+          "img": "27867245_2115145832051638_1319394816153773262_n.jpg",
+          "title": "Lunch",
+          "author": "author"
+        }
       ]
     },
     {
@@ -55,7 +131,14 @@ export default {
           "date": "14 Aug 2018",
           "comment": "Tried twice and nothing was ever open for lunch despite being advertised as they were."
         },
-      ]
+      ],
+      entrees: [
+        {
+          "Id": 1,
+          "Name": "Grilled Chiken Rice Bowl",
+          "Price": "$13",
+        },
+      ],
     },
     {
       "Id": 3,
@@ -86,13 +169,27 @@ export default {
     },
     {
       "Id": 4,
-      "Name": "WESTLAKE/ROLLING WOOD",
-      "Phone": "512-328-2697",
-      "Hours": "11:30am-10:00 pm",
-      "Address": "2805 Bee Caves Rd. #416 Austin, TX 78746",
-      "Description": "Explore your favorite flavors and the fun of Amy's Ice Creams.",
-      "category": "BBQ",
-      "banner": "lala.jpg"
+      "Name": "LUKE’S INSIDE OUT FOOD TRUCK",
+      "Website":"https://www.lukesinsideout.com/",
+      "Phone": "512-589-8883",
+      "Hours": "Monday:\
+      5 p.m. – 9 p.m.\
+      Tuesday:\
+      5 p.m. – 9 p.m.\
+      Wednesday:\
+      11 a.m. – 2 p.m. & 5 p.m. – 9 p.m.\
+      Thursday:\
+      11 a.m. – 2 p.m. & 5 p.m. – 10 p.m.\
+      Friday:\
+      11 a.m. – 2 p.m. & 5 p.m. – 10 p.m.\
+      Saturday:\
+      11 a.m. – 10 p.m.\
+      Sunday: \
+      11:30 a.m. – 11 p.m. ",
+      "Address": "1109 S Lamar Blvd",
+      "Description": "Luke Wibby and his wife run this popular sandwich spot, which is parked beside Gibson Bar on South Lamar. The burger is my favorite, cooked to a delicate ruby and nestled with tomato, spinach, and sauce in between the two soft burger buns.",
+      "category": "American",
+      "banner": "best-austin-food-trucks-15-683x1024.jpg"
     },
     {
       "Id": 5,
@@ -107,65 +204,6 @@ export default {
       "banner": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
     },
   ],
-  entrees: [
-    {
-      "Id": 1,
-      "Name": "Grilled Chiken Rice Bowl",
-      "Price": "$13",
-    },
-    {
-      "Id": 2,
-      "Name": "Crispy Coconuts Shrimp Rice Bowl",
-      "Price": "$13",
-
-    },
-    {
-      "Id": 3,
-      "Name": "Vegetarian Side Sampier",
-      "Price": "$13",
-
-    },
-    {
-      "Id": 4,
-      "Name": "Cheken Teriyaki Meatbowl",
-      "Price": "$13",
-
-    },
-    {
-      "Id": 5,
-      "Name": "The Special",
-      "Price": "$15",
-
-    },
-  ],
-  drinks: [
-    {
-      "Id": 1,
-      "Name": "Diet Coke 12oz",
-      "Price": "$2.00",
-    },
-    {
-      "Id": 2,
-      "Name": "Sprite 12oz",
-      "Price": "$2.00",
-    },
-    {
-      "Id": 3,
-      "Name": "Sprite 12oz",
-      "Price": "$2.00",
-    },
-    {
-      "Id": 4,
-      "Name": "Bottle of Water",
-      "Price": "$2.00",
-    },
-    {
-      "Id": 5,
-      "Name": "Coffee (Hot/Ice)",
-      "Price": "$2.00",
-    },
-
-  ]
 };
 
 

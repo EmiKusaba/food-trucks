@@ -9,7 +9,6 @@ import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import tileData from './tileData';
 import GridList from '@material-ui/core/GridList';
 import Rating from '@material-ui/lab/Rating';
 import Map from "./Map";
@@ -163,23 +162,23 @@ function Photos(props) {
   return (
     <div className={classes.root} ref={props.linkRef}>
       <GridList className={classes.gridList} cols={2.5}>
-        {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
+        {props.photos ? props.photos.map((photo, i) => (
+          <GridListTile key={i}>
+            <img src={getImage(photo.img)} alt={photo.title} />
             <GridListTileBar
-              title={tile.title}
+              title={photo.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
               actionIcon={
-                <IconButton aria-label={`star ${tile.title}`}>
+                <IconButton aria-label={`star ${photo.title}`}>
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
             />
           </GridListTile>
-        ))}
+        )) : null}
       </GridList>
     </div>
   );
@@ -222,8 +221,8 @@ function Details(props) {
       <Typography variant="h3" className="detailHeroText">
         Photos
       </Typography>
-      <Photos linkRef={refPhotos} />
-      <Menu entrees={props.entrees} drinks={props.drinks} linkRef={refMenu} />
+      <Photos linkRef={refPhotos} photos={shop.photos} />
+      <Menu shop={shop} linkRef={refMenu} />
       <Reviews shopId={shop.Id} user={props.user} reviews={shop.reviews} addReview={props.addReview} linkRef={refReview} />
     </Container>
   )

@@ -36,15 +36,15 @@ const MenuTable = (props) => {
   );
 }
 
-const Menu = (props) => {
+const Menu = (props) => {  
   return (
     <Container maxWidth="lg" className="shop-container">
       <Typography variant="h3" className="detailHeroText">
         Menu
       </Typography>
       <div className="flex-container" ref={props.linkRef}>
-        <MenuTable title="Entrees" items={props.entrees} />
-        <MenuTable title="Drinks" items={props.drinks} />
+        <MenuTable title="Entrees" items={props.shop.entrees} />
+        <MenuTable title="Drinks" items={props.shop.drinks} />
       </div>
     </Container>
   )

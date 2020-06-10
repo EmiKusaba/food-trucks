@@ -31,12 +31,5 @@ const shops = (state = [], action) => {
       return state
   }
 }
-const entrees = (state = null) => {
-  return state;
-}
 
-const drinks = (state = null) => {
-  return state;
-}
-
-export default combineReducers({ user, shops, entrees, drinks })
+export default combineReducers({ user, shops })
