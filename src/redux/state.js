@@ -209,7 +209,7 @@ export default {
     {
       "Id": 3,
       "Name": "SOURSOP PAN-ASIAN FOOD TRUCK",
-      "Mail": "",
+      "Mail": "SOURSOPPANASIANFOODTRUCK@GMAIL.COM",
       "Website": "http://www.soursopaustin.com/",
       "Phone": "512-480-0673",
       "Hours": "closed monday | open for lunch & dinner tuesday - sunday",
@@ -325,6 +325,7 @@ export default {
     {
       "Id": 4,
       "Name": "LUKE’S INSIDE OUT FOOD TRUCK",
+      "Mail": "LUKEINSIDEOUT@GMAIL.COM",
       "Website": "https://www.lukesinsideout.com/",
       "Phone": "512-589-8883",
       "Hours": "Monday:\
@@ -344,7 +345,99 @@ export default {
       "Address": "1109 S Lamar Blvd",
       "Description": "Luke Wibby and his wife run this popular sandwich spot, which is parked beside Gibson Bar on South Lamar. The burger is my favorite, cooked to a delicate ruby and nestled with tomato, spinach, and sauce in between the two soft burger buns.",
       "category": "American",
-      "banner": "best-austin-food-trucks-15-683x1024.jpg"
+      "banner": "unnamed.jpg",
+      "reviews": [
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Joseph Johnson",
+          "rating": 4,
+          "date": "14 Aug 2018",
+          "comment": "Good quality fruit. Had a Granny Smith apple that had a lot of flavor.Very nice and friendly owner.Thank you all for considering my review."
+        },
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Jacob Robbins",
+          "rating": 4,
+          "date": "14 Aug 2018",
+          "comment": "Staying in South Lamar and wanted to stay fairly local so I looked up what places to go to, and Luke's instantly jumped to the top of my list. They did not disappoint, I ordered their special which was the Beef Tenderloin and it was spectacular, the tenderloin was so flavorful, juicy, and overflowing. They give you all of your money worth, one of the better food trucks I've ever been to!"
+        },
+      ],
+      entrees: [
+        {
+          "Id": 1,
+          "Name": "The Pressed Pig",
+          "Price": "$12",
+        },
+        {
+          "Id": 2,
+          "Name": "The Cow",
+          "Price": "$11.25",
+        },
+        {
+          "Id": 3,
+          "Name": "The Burger",
+          "Price": "$11.25",
+        },
+        {
+          "Id": 4,
+          "Name": "The Vegetable",
+          "Price": "$10.25",
+        },
+        {
+          "Id": 5,
+          "Name": "The Shrimp",
+          "Price": "$11.25",
+        },
+        {
+          "Id": 6,
+          "Name": "The Chicken",
+          "Price": "$10.25",
+        },
+      ],
+      drinks: [
+        {
+          "Id": 1,
+          "Name": "Diet Coke 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 2,
+          "Name": "Sprite 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 3,
+          "Name": "Sprite 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 4,
+          "Name": "Bottle of Water",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 5,
+          "Name": "Coffee (Hot/Ice)",
+          "Price": "$2.00",
+        },
+      ],
+      "photos": [
+        {
+          "img": "best-austin-food-trucks-15-683x1024.jpg",
+          "title": "Best Austin Food!!",
+          "author": "Luke's inside out"
+        },
+        {
+          "img": "download (5).jpeg",
+          "title": "medium-rare grilled 8oz sirloin",
+          "author": "Luke's inside out"
+        },
+        {
+          "img": "images.jpeg",
+          "title": "Gibson Street Bar",
+          "author": "Gibson Street Bar"
+        }
+      ]
     },
     {
       "Id": 5,
@@ -356,7 +449,94 @@ export default {
       "Address": "1309 Rosewood Ave. | Austin, TX",
       "Description": "Your favorite Amy’s flavors between delicious homemade cake from Baked by Amy’s hand decorated just for you. Find the perfect size, including sheet cakes, for your epic celebration. Party on!",
       "category": "BBQ",
-      "banner": "IMG_2915.jpg",
+      "banner": "IMG_3326-1024x767.jpg",
+      "reviews": [
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Brett Rudolph",
+          "rating": 5,
+          "date": "14 Aug 2018",
+          "comment": "By far one of the best if not the best places in Austin for BBQ. You can go and stand in lines at many other places and at times here too but Micklethwait, has never let me down with the quality of their food. I've eaten here for over 5 years and still come at least once a month. Their smoked barbacoa is perfect."
+        },
+        {
+          "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",
+          "username": "Elwin Lee",
+          "rating": 4,
+          "date": "14 Aug 2018",
+          "comment": "Amazing BBQ! Perfect meat and fat ratio. The meat was tender and moist. Very flavorful and not too fatty. No sauce needed! I got lucky with the line I guess, because it was very quiet on a Friday around 2:30pm. Definitely recommend this place!"
+        },
+      ],
+      entrees: [
+        {
+          "Id": 1,
+          "Name": "Brisket",
+          "Price": "$24",
+        },
+        {
+          "Id": 2,
+          "Name": "Pork Ribs",
+          "Price": "$20",
+        },
+        {
+          "Id": 3,
+          "Name": "Sausage",
+          "Price": "$18",
+        },
+        {
+          "Id": 4,
+          "Name": "Smoked Turkey",
+          "Price": "$20",
+        },
+        {
+          "Id": 5,
+          "Name": "Smoked Chiken",
+          "Price": "$14",
+        },
+      ],
+      drinks: [
+        {
+          "Id": 1,
+          "Name": "Diet Coke 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 2,
+          "Name": "Sprite 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 3,
+          "Name": "Sprite 12oz",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 4,
+          "Name": "Bottle of Water",
+          "Price": "$2.00",
+        },
+        {
+          "Id": 5,
+          "Name": "Coffee (Hot/Ice)",
+          "Price": "$2.00",
+        },
+      ],
+      "photos": [
+        {
+          "img": "download (2).jpeg",
+          "title": "Stunning Pork Ribs",
+          "author": "Mickletwait Craft Meats"
+        },
+        {
+          "img": "download (3).jpeg",
+          "title": "East Austin's best BBQ",
+          "author": "Mickletwait Craft Meats"
+        },
+        {
+          "img": "IMG_2915.jpg",
+          "title": "B-C-S",
+          "author": "Mickletwait Craft Meats"
+        }
+      ]
     },
   ],
 };

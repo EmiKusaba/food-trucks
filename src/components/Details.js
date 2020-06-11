@@ -57,7 +57,7 @@ function HeroUnit(props) {
     paperContainer: {
       backgroundImage: `url(${bannerImage})`,
       backgroundRepeat: "no-repeat",
-      height: "70vh",
+      height: "50vh",
       backgroundSize: "cover",
       backgroundPosition: "center",
       justifyContents: "flexStart",
