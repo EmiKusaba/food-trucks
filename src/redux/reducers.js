@@ -10,12 +10,9 @@ const user = (state = null, action) => {
 }
 const shops = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_SHOP':
-      return [...state, action.value];
-    case 'DELETE_SHOP': {
-      const shops = [...state];
-      shops.splice(action.value, 1);
-      return shops
+    case "GET_SHOP_LIST": {
+      const shops = [...action.shops];
+      return shops;
     }
     case 'ADD_REVIEW': {
       const shops = [...state];

@@ -48,3 +48,7 @@ body{
 .scrollButton{
   padding: 1% !important;
 }
+.home-container{
+  background-color: antiquewhite;
+  padding: 1%;
+}

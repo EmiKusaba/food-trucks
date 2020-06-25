@@ -17,6 +17,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 // import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useHistory } from "react-router-dom";
+import { fetchShopList } from '../redux/actions';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +65,7 @@ function Results(props) {
       <Grid container spacing={4}>
         {props.shops.map((shop, i) => (
           <Grid item key={i} xs={12} sm={6} md={4}>
-            <button onClick={(event) => handleClick(event, shop.Id)} style={{ "border": "none" }}>
+            <button onClick={(event) => handleClick(event, shop.id)} style={{ "border": "none" }}>
               <Card className={classes.card}>
                 <CardMedia
                   className={classes.cardMedia}
@@ -73,10 +74,10 @@ function Results(props) {
                 />
                 <CardContent className={classes.cardContent}>
                   <Typography gutterBottom variant="h5" component="h2">
-                    {shop.Name}
+                    {shop.name}
                   </Typography>
                   <Typography>
-                    {shop.Description}
+                    {shop.description}
                   </Typography>
                 </CardContent>
               </Card>
@@ -201,23 +202,42 @@ function HeroUnitWithButton() {
   );
 }
 
-function Search(props) {
-  const getShops = (category) => {
-    return props.shops.filter((shop) => {
-      return shop.category === category;
-    });
+class Search extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      category: "American",
+    }
+
+    this.setCategory = (category) => {
+      this.setState({
+        category: category,
+      });
+    };
+
+    this.getShops = (category) => {
+        return this.props.shops.filter((shop) => {
+          return shop.category === category;
+      });  
+    };
   }
 
-  const [category, setCategory] = React.useState("American");
-  const shops = getShops(category);
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch(fetchShopList());
+  }
 
-  return (
+  render() {
+    const shops = this.getShops(this.state.category);
+
+    return (
     <Container maxWidth="lg" className="home-container">
-      <HeroUnit category={category} setCategory={setCategory} />
+      <HeroUnit category={this.state.category} setCategory={this.setCategory} />
       <Results shops={shops} />
       <HeroUnitWithButton />
     </Container>
-  )
+  );
+  }
 }
 
 export default Search;
