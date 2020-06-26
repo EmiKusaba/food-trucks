@@ -6,14 +6,12 @@ import { addReview } from "../redux/actions";
 const mapStateToProps = (state) => {
   return {
     user: state.user,
-    shops: state.shops,
-    entrees: state.entrees,
-    drinks: state.drinks,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    dispatch: dispatch,
     addReview: (review) => dispatch(addReview(review)),
   }
 }

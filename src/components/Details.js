@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, createRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
@@ -19,6 +19,8 @@ import { spacing } from '@material-ui/system';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import { fetchShopDetails } from '../redux/actions';
+
 
 const getImage = (path) => {
   const images = require.context("../Images", true);
@@ -183,48 +185,63 @@ function Photos(props) {
     </div>
   );
 }
-function Details(props) {
 
-  const refPhotos = useRef();
-  const refOverView = useRef();
-  const refSchedule = useRef();
-  const refMenu = useRef();
-  const refReview = useRef();
-  const id = props.match.params.id
-  const shop = props.shops.find(s => String(s.Id) === id)
+class Details extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const buttons = [
+    this.refPhotos = createRef();
+    this.refOverView = createRef();
+    this.refSchedule = createRef();
+    this.refMenu = createRef();
+    this.refReview = createRef();
+  }
 
-    <ScrollToButton linkRef={refOverView} title="Overview" key="OverView" />,
-    <ScrollToButton linkRef={refPhotos} title="Photos" key="photos" />,
-    <ScrollToButton linkRef={refSchedule} title="Schedule" key="schedule" />,
-    <ScrollToButton linkRef={refMenu} title="Menu" key="menu" />,
-    <ScrollToButton linkRef={refReview} title="Review" key="Review" />,
+  componentDidMount() {
+    const {dispatch} = this.props;
+    dispatch(fetchShopDetails(this.props.match.params.id));
+  }
 
-  ]
+  render() {
 
-  return (
-    <Container maxWidth="lg" className="home-container">
+    const shop = this.props.shop;
 
-      <HeroUnit shop={shop} />
-      <div className="firstSection">
-        <Title shop={shop}/>
-        <SimpleRating />
-      </div>
-      <DetailNavBar buttons={buttons} className="scrollButton" />
-      <Overview linkRef={refOverView} shop={shop}/>
-      <Typography variant="h3" className="detailHeroText">
-        Map
-      </Typography>
-      <Map address={shop.Address} zoom={16} />
-      <Schedule linkRef={refSchedule} />
-      <Typography variant="h3" className="detailHeroText">
-        Photos
-      </Typography>
-      <Photos linkRef={refPhotos} photos={shop.photos} />
-      <Menu shop={shop} linkRef={refMenu} />
-      <Reviews shopId={shop.Id} user={props.user} reviews={shop.reviews} addReview={props.addReview} linkRef={refReview} />
-    </Container>
-  )
+    if(!shop) {
+      return null;
+    }
+
+    const buttons = [
+      <ScrollToButton linkRef={this.refOverView} title="Overview" key="OverView" />,
+      <ScrollToButton linkRef={this.refPhotos} title="Photos" key="photos" />,
+      <ScrollToButton linkRef={this.refSchedule} title="Schedule" key="schedule" />,
+      <ScrollToButton linkRef={this.refMenu} title="Menu" key="menu" />,
+      <ScrollToButton linkRef={this.refReview} title="Review" key="Review" />,
+    ];
+
+    return (
+      <Container maxWidth="lg" className="home-container">
+  
+        <HeroUnit shop={shop} />
+        <div className="firstSection">
+          <Title shop={shop}/>
+          <SimpleRating />
+        </div>
+        <DetailNavBar buttons={buttons} className="scrollButton" />
+        <Overview linkRef={this.refOverView} shop={shop}/>
+        <Typography variant="h3" className="detailHeroText">
+          Map
+        </Typography>
+        <Map address={shop.address} zoom={16} />
+        <Schedule linkRef={this.refSchedule} />
+        <Typography variant="h3" className="detailHeroText">
+          Photos
+        </Typography>
+        <Photos linkRef={this.refPhotos} photos={shop.photos} />
+        <Menu shop={shop} linkRef={this.refMenu} />
+        <Reviews shopId={shop.id} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} />
+      </Container>
+    )
+  }
 }
+
 export default Details;

@@ -14,6 +14,10 @@ const shops = (state = [], action) => {
       const shops = [...action.shops];
       return shops;
     }
+    case "GET_SHOP_DETAILS": {
+      const shop = action.shop;
+      return shop;
+    }
     case 'ADD_REVIEW': {
       const shops = [...state];
       shops.forEach((shop) => {
