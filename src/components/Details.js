@@ -4,7 +4,6 @@ import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
-import Images from '../Images/5bad51bc-b238-4e92-a5ca-45e746204482.jpg'
 import IconButton from '@material-ui/core/IconButton';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -14,17 +13,27 @@ import Rating from '@material-ui/lab/Rating';
 import Map from "./Map";
 import Schedule from "./Schedule";
 import Menu from "./Menu";
-import Reviews from "./Reviews";
-import { spacing } from '@material-ui/system';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import { fetchShopDetails } from '../redux/actions';
-
 
 const getImage = (path) => {
   const images = require.context("../Images", true);
   return images(`./${path}`);
+}
+
+const getImages = (id) => {
+  let images = [];
+  let i = 0;
+  while (true) {
+    try {
+      const path = `trucks/${id}/${i}`
+      images.push(getImage(path));
+      ++i;
+    }
+    catch (error) {
+      break;
+    }
+  }
+  return images;
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -53,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function HeroUnit(props) {
-  const bannerImage = getImage(props.shop.banner);
+  const bannerImage = getImage(`trucks/${props.shop.id}/banner`);
   const classes = useStyles();
   const styles = {
     paperContainer: {
@@ -70,7 +79,7 @@ function HeroUnit(props) {
   return (
     <div className={classes.heroContent} >
       <Container maxWidth="lg" style={styles.paperContainer} >
-
+        <div/>
       </Container>
     </div>
 
@@ -80,11 +89,11 @@ function Title(props) {
   return (
     <div>
       <Typography variant="h1" className="detailHeroText">
-        {props.shop.Name}
-        </Typography>
+        {props.shop.name}
+      </Typography>
       <Typography component="legend" className="detailHeroText">
         {props.shop.category}
-        </Typography>
+      </Typography>
     </div>
   )
 }
@@ -119,27 +128,30 @@ function DetailNavBar(props) {
 function Overview(props) {
   return (
     <div ref={props.linkRef}>
-      <Typography variant="h3" className="detailHeroText">
+      <Typography variant="h5" className="detailHeroText">
         Overview
-        </Typography>
+      </Typography>
+      <Typography component="legend" className="detailHeroText">
+        {props.shop.description}
+      </Typography>
       <Typography variant="h5" className="detailHeroText">
         Mail
-        </Typography>
+      </Typography>
       <Typography component="legend" className="detailHeroText">
-        {props.shop.Mail}
-        </Typography>
+        {props.shop.email}
+      </Typography>
       <Typography variant="h5" className="detailHeroText">
         Phone
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        {props.shop.Phone}
-        </Typography>
+        {props.shop.phone}
+      </Typography>
       <Typography variant="h5" className="detailHeroText">
         Website
         </Typography>
       <Typography component="legend" className="detailHeroText">
-        {props.shop.Website}
-        </Typography>
+        {props.shop.website}
+      </Typography>
     </div>
   )
 }
@@ -161,20 +173,21 @@ function SimpleRating() {
 function Photos(props) {
   const classes = useStyles();
 
+  const photos = getImages(props.shop.id);
+
   return (
     <div className={classes.root} ref={props.linkRef}>
       <GridList className={classes.gridList} cols={2.5}>
-        {props.photos ? props.photos.map((photo, i) => (
+        {photos ? photos.map((img, i) => (
           <GridListTile key={i}>
-            <img src={getImage(photo.img)} alt={photo.title} />
+            <img src={img} />
             <GridListTileBar
-              title={photo.title}
               classes={{
                 root: classes.titleBar,
                 title: classes.title,
               }}
               actionIcon={
-                <IconButton aria-label={`star ${photo.title}`}>
+                <IconButton aria-label={`star ${i}`}>
                   <StarBorderIcon className={classes.title} />
                 </IconButton>
               }
@@ -198,7 +211,7 @@ class Details extends React.Component {
   }
 
   componentDidMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(fetchShopDetails(this.props.match.params.id));
   }
 
@@ -206,7 +219,7 @@ class Details extends React.Component {
 
     const shop = this.props.shop;
 
-    if(!shop) {
+    if (!shop) {
       return null;
     }
 
@@ -220,14 +233,14 @@ class Details extends React.Component {
 
     return (
       <Container maxWidth="lg" className="home-container">
-  
+
         <HeroUnit shop={shop} />
         <div className="firstSection">
-          <Title shop={shop}/>
+          <Title shop={shop} />
           <SimpleRating />
         </div>
         <DetailNavBar buttons={buttons} className="scrollButton" />
-        <Overview linkRef={this.refOverView} shop={shop}/>
+        <Overview linkRef={this.refOverView} shop={shop} />
         <Typography variant="h3" className="detailHeroText">
           Map
         </Typography>
@@ -236,9 +249,9 @@ class Details extends React.Component {
         <Typography variant="h3" className="detailHeroText">
           Photos
         </Typography>
-        <Photos linkRef={this.refPhotos} photos={shop.photos} />
+        <Photos linkRef={this.refPhotos} shop={shop} />
         <Menu shop={shop} linkRef={this.refMenu} />
-        <Reviews shopId={shop.id} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} />
+        {/* <Reviews shopId={shop.id} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} /> */}
       </Container>
     )
   }

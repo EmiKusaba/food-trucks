@@ -6,6 +6,7 @@ import { addReview } from "../redux/actions";
 const mapStateToProps = (state) => {
   return {
     user: state.user,
+    shop: state.shop,
   }
 }
 

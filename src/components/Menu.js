@@ -24,10 +24,10 @@ const MenuTable = (props) => {
         {props.items ? props.items.map((item, i) => (
           <TableRow key={i}>
             <TableCell>
-              {item.Name}
+              {item.name}
             </TableCell>
             <TableCell>
-              {item.Price}
+              ${item.price}
             </TableCell>
           </TableRow>
         )) : null}

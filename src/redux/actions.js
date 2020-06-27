@@ -54,7 +54,6 @@ export const fetchShopDetails = (id) => {
                     truckJson.reviews = reviewsJson;
                     truckJson.entrees = entreesJson;
                     truckJson.drinks = drinksJson;
-                    console.log(truckJson);
                     dispatch(getShopDetails(truckJson))
                   });
               });

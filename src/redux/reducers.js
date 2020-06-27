@@ -14,10 +14,6 @@ const shops = (state = [], action) => {
       const shops = [...action.shops];
       return shops;
     }
-    case "GET_SHOP_DETAILS": {
-      const shop = action.shop;
-      return shop;
-    }
     case 'ADD_REVIEW': {
       const shops = [...state];
       shops.forEach((shop) => {
@@ -33,4 +29,15 @@ const shops = (state = [], action) => {
   }
 }
 
-export default combineReducers({ user, shops })
+const shop = (state = null, action) => {
+  switch (action.type) {
+    case "GET_SHOP_DETAILS": {
+      const shop = action.shop;
+      return shop;
+    }
+    default:
+      return state;
+  }
+}
+
+export default combineReducers({ user, shop, shops })
