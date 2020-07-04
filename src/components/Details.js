@@ -1,4 +1,4 @@
-import React, { useRef, createRef } from 'react';
+import React, { createRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Container } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
@@ -13,6 +13,7 @@ import Rating from '@material-ui/lab/Rating';
 import Map from "./Map";
 import Schedule from "./Schedule";
 import Menu from "./Menu";
+import Reviews from "./Reviews";
 import { fetchShopDetails } from '../redux/actions';
 
 const getImage = (path) => {
@@ -79,7 +80,7 @@ function HeroUnit(props) {
   return (
     <div className={classes.heroContent} >
       <Container maxWidth="lg" style={styles.paperContainer} >
-        <div/>
+        <div />
       </Container>
     </div>
 
@@ -180,7 +181,7 @@ function Photos(props) {
       <GridList className={classes.gridList} cols={2.5}>
         {photos ? photos.map((img, i) => (
           <GridListTile key={i}>
-            <img src={img} />
+            <img src={img} alt={i} />
             <GridListTileBar
               classes={{
                 root: classes.titleBar,
@@ -212,16 +213,16 @@ class Details extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchShopDetails(this.props.match.params.id));
+    dispatch(fetchShopDetails(Number(this.props.match.params.id)));
   }
 
   render() {
 
-    const shop = this.props.shop;
-
-    if (!shop) {
+    const shops = this.props.shops.filter(shop => Number(this.props.match.params.id) === shop.id);
+    if (shops.length === 0) {
       return null;
     }
+    const shop = shops[0];
 
     const buttons = [
       <ScrollToButton linkRef={this.refOverView} title="Overview" key="OverView" />,
@@ -251,7 +252,7 @@ class Details extends React.Component {
         </Typography>
         <Photos linkRef={this.refPhotos} shop={shop} />
         <Menu shop={shop} linkRef={this.refMenu} />
-        {/* <Reviews shopId={shop.id} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} /> */}
+        <Reviews shop={shop} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} />
       </Container>
     )
   }

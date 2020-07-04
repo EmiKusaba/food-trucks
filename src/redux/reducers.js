@@ -14,30 +14,23 @@ const shops = (state = [], action) => {
       const shops = [...action.shops];
       return shops;
     }
-    case 'ADD_REVIEW': {
-      const shops = [...state];
-      shops.forEach((shop) => {
-        const review = action.value;
-        if (shop.Id === Number(review.shopId)) {
-          shop.reviews = [...shop.reviews, review];
+    case "GET_SHOP_DETAILS": {
+      if (!action.shop) {
+        return state;
+      }
+      if (!state || state.length === 0) {
+        return [action.shop];
+      }
+      return state.map((shop) => {
+        if (shop.id === action.shop.id) {
+          return Object.assign(shop, action.shop);
         }
+        return shop;
       });
-      return shops;
     }
     default:
       return state
   }
 }
 
-const shop = (state = null, action) => {
-  switch (action.type) {
-    case "GET_SHOP_DETAILS": {
-      const shop = action.shop;
-      return shop;
-    }
-    default:
-      return state;
-  }
-}
-
-export default combineReducers({ user, shop, shops })
+export default combineReducers({ user, shops })

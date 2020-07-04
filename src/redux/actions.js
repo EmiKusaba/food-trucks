@@ -19,18 +19,11 @@ export const getShopDetails = (shop) => {
   }
 }
 
-export const addReview = (review) => {
-  return {
-    type: "ADD_REVIEW",
-    value: review,
-  }
-}
-
 // Fetch API
 
 export const fetchShopList = () => {
   return (dispatch) => {
-    return fetch("http://localhost:4001/trucks/")
+    return fetch(`${process.env.REACT_APP_API_URL}/trucks/`)
       .then(response => response.json())
       .then(json => dispatch(getShopList(json)))
   }
@@ -38,27 +31,22 @@ export const fetchShopList = () => {
 
 export const fetchShopDetails = (id) => {
   return (dispatch) => {
-    return fetch(`http://localhost:4001/trucks/${id}`)
-      .then(response => response.json())
-      .then(truckJson => {
-        fetch(`http://localhost:4001/trucks/${id}/reviews`)
-          .then(response => response.json())
-          .then(reviewsJson => {
-            fetch(`http://localhost:4001/trucks/${id}/entrees`)
-              .then(response => response.json())
-              .then(entreesJson => {
-                fetch(`http://localhost:4001/trucks/${id}/drinks`)
-                  .then(response => response.json())
-                  .then(drinksJson => {
-                    truckJson = truckJson[0];
-                    truckJson.reviews = reviewsJson;
-                    truckJson.entrees = entreesJson;
-                    truckJson.drinks = drinksJson;
-                    dispatch(getShopDetails(truckJson))
-                  });
-              });
-          });
-      });
-  }
+    return Promise.all([
+      fetch(`${process.env.REACT_APP_API_URL}/trucks/${id}`),
+      fetch(`${process.env.REACT_APP_API_URL}/trucks/${id}/entrees`),
+      fetch(`${process.env.REACT_APP_API_URL}/trucks/${id}/drinks`),
+      fetch(`${process.env.REACT_APP_API_URL}/trucks/${id}/reviews`),
+    ])
+      .then(responses => Promise.all(responses.map(response => response.json())))
+      .then(data => {
+        let truck = data[0][0];
+        truck.entrees = data[1];
+        truck.drinks = data[2];
+        truck.reviews = data[3];
+        dispatch(getShopDetails(truck));
+      })
+      .catch(error => console.log(error));
+  };
 }
+
 

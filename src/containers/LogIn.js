@@ -1,18 +1,17 @@
 import { connect } from 'react-redux'
 import LogIn from '../components/LogIn'
-import { setUser } from '../redux/actions'
 
 const mapStateToProps = (state) => {
-    return {
-        user: state.user,
-    }
+  return {
+    user: state.user,
+    shops: state.shops,
+  }
 }
 
-// add mapDispatchToProps function here
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setUser: (user) => dispatch(setUser(user))
-    }
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch: dispatch,
+  }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
 
 const UserAvatar = (props) => {
   const classes = useStyles();
-  const avatar = (props.avatar ? <Avatar src={props.avatar} className={classes.large} /> : null);
+  const avatar = <Avatar src={`../Images/users/${props.user_id}/avatar`} className={classes.large} />;
   return (
     <Box>
       {avatar}
@@ -44,31 +44,31 @@ const Review = (props) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
-    <Table>
-      <TableBody>
-        <TableRow>
-          <TableCell rowSpan={3}>
-            <UserAvatar username={props.username} avatar={props.avatar} />
-          </TableCell>
-          <TableCell>
-            {props.username}
-          </TableCell>
-          <TableCell>
-            <Rating value={props.rating} readOnly size="small" />
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell colSpan={2}>
-            {props.date}
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell colSpan={2}>
-            {props.comment}
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+      <Table>
+        <TableBody>
+          <TableRow>
+            <TableCell rowSpan={3}>
+              <UserAvatar user_id={props.review.user_id} username={props.review.username} />
+            </TableCell>
+            <TableCell>
+              {props.review.username}
+            </TableCell>
+            <TableCell>
+              <Rating value={props.review.rating} readOnly size="small" />
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2}>
+              {props.review.ts}
+            </TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2}>
+              {props.review.comment}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
     </div>
   )
 };
@@ -76,18 +76,26 @@ const Review = (props) => {
 const AddReview = (props) => {
   const [comment, setComment] = React.useState("");
   const [rating, setRating] = React.useState(5);
+  const [dummy, setDummy] = React.useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const review = {
-      "shopId": props.shopId,
-      "avatar": props.user.avatar,
-      "username": props.user.username,
+      "userId": props.user.id,
       "rating": rating,
-      "date": (new Date()).toLocaleDateString(),
       "comment": comment,
     };
-    props.addReview(review);
+
+    fetch(`${process.env.REACT_APP_API_URL}/trucks/${props.shop.id}/reviews`, {
+      method: "PUT",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(review)
+    }).then(res => {
+      setDummy(dummy + 1);
+    })
   }
 
   const handleCommentChange = (e) => {
@@ -104,7 +112,7 @@ const AddReview = (props) => {
         <TableBody>
           <TableRow>
             <TableCell rowSpan={2}>
-              <UserAvatar username={props.user.username} avatar={props.user.avatar} />
+              <UserAvatar user_id={props.user.id} username={props.user.name} />
             </TableCell>
             <TableCell>
               <TextField
@@ -126,7 +134,7 @@ const AddReview = (props) => {
                 type="submit"
                 variant="contained"
                 color="primary"
-                >
+              >
                 Submit
               </Button>
             </TableCell>
@@ -145,10 +153,10 @@ const Reviews = (props) => {
         Review
       </Typography>
       <div>
-        <AddReview shopId={props.shopId} user={props.user} addReview={props.addReview} />
+        {props.user ? <AddReview shop={props.shop} user={props.user} /> : null}
         {
           props.reviews ? props.reviews.map((review, i) => {
-            return <Review key={i} username={review.username} avatar={review.avatar} rating={review.rating} date={review.date} comment={review.comment} />
+            return <Review key={i} review={review} />
           }) : null
         }
       </div>

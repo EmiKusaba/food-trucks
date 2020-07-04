@@ -14,9 +14,7 @@ import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { withStyles } from "@material-ui/core/styles";
-
-
-
+import { setUser } from "../redux/actions";
 
 function Copyright() {
   return (
@@ -56,7 +54,8 @@ class LogIn extends Component {
 
   state = {
     username: '',
-    password: ''
+    password: '',
+    msg: "",
   }
 
   handleTextChange = (e) => {
@@ -67,20 +66,31 @@ class LogIn extends Component {
 
   login = (e) => {
     e.preventDefault()
-    // set cookie here
-    // set loggedIn = true and max-age = 60*1000 (one minute)
-    document.cookie = "loggedIn=true;max-age=60*1000"
-    this.props.setUser(this.state)
-    this.props.history.push("/");
+    fetch(`${process.env.REACT_APP_API_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ username: this.state.username, password: this.state.password })
+    })
+      .then(res => res.json())
+      .then(json => {
+        if (json.success && json.user) {
+          document.cookie = "loggedIn=true;max-age=60*1000"
+          this.props.dispatch(setUser(json.user));
+          this.props.history.push("/");
+        }
+        if (json.message) {
+          this.setState({ msg: json.message });
+        }
+      });
   }
 
   logout = (e) => {
     e.preventDefault()
-    // set cookie here
-    // set loggedIn = true and max-age = 60*1000 (one minute)
     document.cookie = "loggedIn=false;"
     this.props.setUser(null)
-    //this.props.history.push("/");
   }
   render() {
     const { classes } = this.props;
@@ -95,6 +105,7 @@ class LogIn extends Component {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
+            <h2>{this.state.msg}</h2>
             <form className="login-form" onSubmit={this.login}>
               <TextField
                 required

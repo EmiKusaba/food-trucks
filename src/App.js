@@ -10,6 +10,10 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import orange from '@material-ui/core/colors/orange';
 import blue from '@material-ui/core/colors/blue';
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const primary = orange[500];
 const secondary = blue[500];
 const dark = 'rgba(0, 0, 0, 0.87)'

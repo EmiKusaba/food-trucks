@@ -21,7 +21,7 @@ export default {
           "username": "Argo Khon",
           "rating": 5,
           "date": "14 Aug 2018",
-          "comment": "I give The Bamboo Skewer 5 stars for amazing grill chicken at amazing prices, run by a small local family!  The Food truck is new, and they are still working on the ambiance with decorations and lighting.   And occasionally if they are extremely slammed, can get overwhelmed.  But this is all forgivable because I've never waited more than 10 minutes for a food, and everyone is very hospitable."
+            "comment": "I give The Bamboo Skewer 5 stars for amazing grill chicken at amazing prices, run by a small local family!  The Food truck is new, and they are still working on the ambiance with decorations and lighting.   And occasionally if they are extremely slammed, can get overwhelmed.  But this is all forgivable because I've never waited more than 10 minutes for a food, and everyone is very hospitable."
         },
         {
           "avatar": "https://yt3.ggpht.com/a/AGF-l79MDVsXxNOnEfWk0ESmYAZxx3n0oioKY0R8pw=s240-c-k-c0xffffffff-no-rj-mo",

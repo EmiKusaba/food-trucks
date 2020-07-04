@@ -4,12 +4,14 @@ import Schedule from '../components/Schedule'
 
 const mapStateToProps = (state) => {
   return {
+    user: state.user,
+    shops: state.shops,
   }
 }
 
-// add mapDispatchToProps function here
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
+    dispatch: dispatch,
   }
 }
 
