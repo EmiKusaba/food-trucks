@@ -7,12 +7,11 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Images from '../Images/nordwood-themes-Tmz8FThN_BE-unsplash.jpg'
+import Images from '../Images/search-banner.jpg'
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
-// import Autocomplete from '@material-ui/lab/Autocomplete';
 import { useHistory } from "react-router-dom";
 import { fetchShopList } from '../redux/actions';
 
@@ -114,14 +113,14 @@ function HeroUnit(props) {
 
   return (
     <div className={classes.heroContent} >
-      <Container maxWidth="lg" style={styles.paperContainer} className ="top-container">
+      <Container maxWidth="lg" style={styles.paperContainer} className="top-container">
         <Typography variant="h1">
           Discover the Latest News and Best Food Trucks in Austin
         </Typography>
         <Typography variant="h4">
           Explore breweries, upcoming events, menus, and your favorite brewery & food truck pairings
         </Typography>
-        <Container  maxWidth="sm">
+        <Container maxWidth="sm">
           <form className="login-form">
             <FormControl variant="outlined" >
               <InputLabel id="select-label-category">Category</InputLabel>
@@ -213,14 +212,14 @@ class Search extends React.Component {
     };
 
     this.getShops = (category) => {
-        return this.props.shops.filter((shop) => {
-          return shop.category === category;
-      });  
+      return this.props.shops.filter((shop) => {
+        return shop.category === category;
+      });
     };
   }
 
   componentDidMount() {
-    const {dispatch} = this.props;
+    const { dispatch } = this.props;
     dispatch(fetchShopList());
   }
 
@@ -228,12 +227,12 @@ class Search extends React.Component {
     const shops = this.getShops(this.state.category);
 
     return (
-    <Container maxWidth="lg" className="home-container">
-      <HeroUnit category={this.state.category} setCategory={this.setCategory} />
-      <Results shops={shops} />
-      <HeroUnitWithButton />
-    </Container>
-  );
+      <Container maxWidth="lg" className="home-container">
+        <HeroUnit category={this.state.category} setCategory={this.setCategory} />
+        <Results shops={shops} />
+        <HeroUnitWithButton />
+      </Container>
+    );
   }
 }
 

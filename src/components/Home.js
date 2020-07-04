@@ -9,11 +9,17 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
-import Images from '../Images/paula-vermeulen-URjZkhqsuBk-unsplash.jpg'
+import Images from '../Images/home-banner.jpg'
+import { useHistory } from "react-router-dom";
+import { fetchShopList } from '../redux/actions';
+
+const getImage = (path) => {
+  const images = require.context("../Images", true);
+  return images(`./${path}`);
+}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -52,8 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -82,38 +86,39 @@ TabPanel.propTypes = {
 
 function TabContents(props) {
   const classes = useStyles();
+  const history = useHistory();
+  const handleClick = (event, id) => {
+    event.preventDefault();
+    history.push(`/shop/${id}`);
+  }
 
   return (
     <Container className={classes.cardGrid} maxWidth="md">
       <h3>{props.title}</h3>
       <Grid container spacing={4}>
-        {cards.map((card) => (
-          <Grid item key={card} xs={12} sm={6} md={4}>
-            <Card className={classes.card}>
-              <CardMedia
-                className={classes.cardMedia}
-                image="https://source.unsplash.com/random"
-                title="Image title"
-              />
-              <CardContent className={classes.cardContent}>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Heading
-                    </Typography>
-                <Typography>
-                  This is a media card. You can use this section to describe the content.
-                    </Typography>
-              </CardContent>
-              <CardActions>
-                <Button size="small" color="primary">
-                  View
-                    </Button>
-                <Button size="small" color="primary">
-                  Edit
-                    </Button>
-              </CardActions>
-            </Card>
+
+        {props.shops.map((shop, i) => (
+          <Grid item key={i} xs={12} sm={6} md={4}>
+            <button onClick={(event) => handleClick(event, shop.id)} style={{ "border": "none" }}>
+              <Card className={classes.card}>
+                <CardMedia
+                  className={classes.cardMedia}
+                  image={getImage(`trucks/${shop.id}/0`)}
+                  title={shop.name}
+                />
+                <CardContent className={classes.cardContent}>
+                  <Typography gutterBottom variant="h5" component="h2">
+                    {shop.name}
+                  </Typography>
+                  <Typography>
+                    {shop.description}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </button>
           </Grid>
         ))}
+
       </Grid>
     </Container>
   );
@@ -184,12 +189,32 @@ function HeroUnitWithButton() {
   );
 }
 
-function ScrollableTabsButtonAuto() {
+function ScrollableTabsButtonAuto(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const categories = [
+    "All",
+    "American",
+    "Mexican",
+    "BBQ",
+    "Asian",
+    "Italian",
+    "Dessert",
+    "Others"
+  ];
+
+  const getShopsInCategory = (category) => {
+    return props.shops.filter((shop) => {
+      if (category === "All") {
+        return true;
+      }
+      return shop.category === category;
+    })
   };
 
   return (
@@ -204,49 +229,42 @@ function ScrollableTabsButtonAuto() {
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
         >
-          <Tab label="American" {...a11yProps(0)} />
-          <Tab label="Mexican" {...a11yProps(1)} />
-          <Tab label="BBQ" {...a11yProps(2)} />
-          <Tab label="Asian" {...a11yProps(3)} />
-          <Tab label="Italian" {...a11yProps(4)} />
-          <Tab label="Dessert" {...a11yProps(5)} />
-          <Tab label="Others" {...a11yProps(6)} />
+
+          {categories.map((category, i) => {
+            return <Tab label={category} {...a11yProps(i)} />
+          })}
+
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <TabContents title="American" />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <TabContents title="Mexican" />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <TabContents title="BBQ" />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <TabContents title="Asian" />
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        <TabContents title="Italian" />
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <TabContents title="Dessert" />
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        <TabContents title="Others" />
-      </TabPanel>
+
+      {categories.map((category, i) => {
+        return (
+          <TabPanel value={value} index={i} >
+            <TabContents title={category} shops={getShopsInCategory(category)} />
+          </TabPanel>
+        );
+      })}
+
     </div>
   );
 }
 
+class Home extends React.Component {
 
-function Home() {
-  return (
-    <Container width="75%" className="home-container">
-      <HeroUnit />
-      <ScrollableTabsButtonAuto />
-      <HeroUnitWithButton />
-    </Container>
-  )
+  componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchShopList());
+  }
+
+  render() {
+    return (
+      <Container width="75%" className="home-container">
+        <HeroUnit shops={this.props.shops} />
+        <ScrollableTabsButtonAuto shops={this.props.shops} />
+        <HeroUnitWithButton shops={this.props.shops} />
+      </Container>
+    )
+  }
 }
 
 export default Home;

@@ -17,7 +17,7 @@ class Navigation extends React.Component {
       </Typography>
           <ul className="nav-list">
             <li className="nav-list-item">
-              <Link to="/search">Search</Link>
+              <Link to="/">Home</Link>
             </li>
             {
               checkAuth() ? (
