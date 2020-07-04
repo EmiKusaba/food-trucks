@@ -19,25 +19,11 @@ class Navigation extends React.Component {
             <li className="nav-list-item">
               <Link to="/">Home</Link>
             </li>
-            {
-              checkAuth() ? (
-                <li className="nav-list-item">
-                  <Link to="/setting">Setting</Link>
-                </li >
-              ) : null
-            }
-            {
-              checkAuth() ? (
-                <li className="nav-list-item">
-                  <Link to="/favorites">Favorites</Link>
-                </li >
-              ) : null
-            }
             <li className="nav-list-item"
               onClick={() => {
                 document.cookie = "loggedIn="
               }}>
-              <Link to="/login">{checkAuth() ? "Logout" : "Login"}</Link>
+              <Link to="/login">{checkAuth() ? `Logout ${this.props.user.name}` : "Login"}</Link>
             </li>
           </ul>
         </Toolbar>
