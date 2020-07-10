@@ -44,11 +44,15 @@ body{
 .firstSection{
   display: flex;
   padding: 2%;
+  
 }
 .scrollButton{
   padding: 1% !important;
 }
 .home-container{
-  background-color: antiquewhite;
+  background-color:whitesmoke;
   padding: 1%;
 }
+/* .classes.root{
+  background-color:whitesmoke;
+} */

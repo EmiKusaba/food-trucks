@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "whitesmoke",
   },
   gridList: {
     flexWrap: 'nowrap',
@@ -59,6 +59,7 @@ const useStyles = makeStyles((theme) => ({
   },
   scrollButton: {
     minWidth: '20%',
+    fontSize: 20,
   }
 }));
 
@@ -111,6 +112,7 @@ function ScrollToButton(props) {
       onClick={handleClick}
       padding="5px"
       disableElevation
+
     >{props.title}</Button>
 
   )
@@ -127,31 +129,48 @@ function DetailNavBar(props) {
 }
 
 function Overview(props) {
+
   return (
     <div ref={props.linkRef}>
       <Typography variant="h5" className="detailHeroText">
-        Overview
+        <Box fontWeight="fontWeightBold">
+          Overview
+        </Box>
       </Typography>
       <Typography component="legend" className="detailHeroText">
-        {props.shop.description}
+        <Box m={1}>
+          {props.shop.description}
+        </Box>
       </Typography>
       <Typography variant="h5" className="detailHeroText">
-        Mail
+        <Box fontWeight="fontWeightBold">
+          Email
+        </Box>
       </Typography>
-      <Typography component="legend" className="detailHeroText">
-        {props.shop.email}
-      </Typography>
-      <Typography variant="h5" className="detailHeroText">
-        Phone
-        </Typography>
-      <Typography component="legend" className="detailHeroText">
-        {props.shop.phone}
+      <Typography variant="subtitle1" className="detailHeroText">
+        <Box m={1}>
+          {props.shop.email}
+        </Box>
       </Typography>
       <Typography variant="h5" className="detailHeroText">
-        Website
-        </Typography>
+        <Box fontWeight="fontWeightBold">
+          Phone
+        </Box>
+      </Typography>
       <Typography component="legend" className="detailHeroText">
-        {props.shop.website}
+        <Box m={1}>
+          {props.shop.phone}
+        </Box>
+      </Typography>
+      <Typography variant="h5" className="detailHeroText">
+        <Box fontWeight="fontWeightBold">
+          Website
+        </Box>
+      </Typography>
+      <Typography component="legend" className="detailHeroText">
+        <Box m={1}>
+          {props.shop.website}
+        </Box>
       </Typography>
     </div>
   )
@@ -241,6 +260,7 @@ class Details extends React.Component {
           <SimpleRating />
         </div>
         <DetailNavBar buttons={buttons} className="scrollButton" />
+        <Box m={2} />
         <Overview linkRef={this.refOverView} shop={shop} />
         <Typography variant="h3" className="detailHeroText">
           Map
