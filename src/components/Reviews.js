@@ -76,7 +76,6 @@ const Review = (props) => {
 const AddReview = (props) => {
   const [comment, setComment] = React.useState("");
   const [rating, setRating] = React.useState(5);
-  const [dummy, setDummy] = React.useState(0);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -94,7 +93,7 @@ const AddReview = (props) => {
       },
       body: JSON.stringify(review)
     }).then(res => {
-      setDummy(dummy + 1);
+      props.onSubmitted();
     })
   }
 
@@ -123,6 +122,7 @@ const AddReview = (props) => {
             </TableCell>
             <TableCell>
               <Rating
+                name="rating"
                 value={rating}
                 onChange={handleRatingChange}
               />
@@ -153,7 +153,7 @@ const Reviews = (props) => {
         Review
       </Typography>
       <div>
-        {props.user ? <AddReview shop={props.shop} user={props.user} /> : null}
+        {props.user ? <AddReview shop={props.shop} user={props.user} onSubmitted={props.onSubmitted}/> : null}
         {
           props.reviews ? props.reviews.map((review, i) => {
             return <Review key={i} review={review} />

@@ -71,7 +71,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <Typography component={'div'}>{children}</Typography>
         </Box>
       )}
     </div>
@@ -231,7 +231,7 @@ function ScrollableTabsButtonAuto(props) {
         >
 
           {categories.map((category, i) => {
-            return <Tab label={category} {...a11yProps(i)} />
+            return <Tab key={i} label={category} {...a11yProps(i)} />
           })}
 
         </Tabs>
@@ -239,7 +239,7 @@ function ScrollableTabsButtonAuto(props) {
 
       {categories.map((category, i) => {
         return (
-          <TabPanel value={value} index={i} >
+          <TabPanel key={i} value={value} index={i} >
             <TabContents title={category} shops={getShopsInCategory(category)} />
           </TabPanel>
         );

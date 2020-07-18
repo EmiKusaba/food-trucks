@@ -228,15 +228,19 @@ class Details extends React.Component {
     this.refSchedule = createRef();
     this.refMenu = createRef();
     this.refReview = createRef();
+
+    this.onSubmitted = () => {
+      const { dispatch } = this.props;
+      dispatch(fetchShopDetails(Number(this.props.match.params.id)));
+    }
   }
 
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch(fetchShopDetails(Number(this.props.match.params.id)));
-  }
+  }  
 
   render() {
-
     const shops = this.props.shops.filter(shop => Number(this.props.match.params.id) === shop.id);
     if (shops.length === 0) {
       return null;
@@ -272,7 +276,7 @@ class Details extends React.Component {
         </Typography>
         <Photos linkRef={this.refPhotos} shop={shop} />
         <Menu shop={shop} linkRef={this.refMenu} />
-        <Reviews shop={shop} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} />
+        <Reviews shop={shop} user={this.props.user} reviews={shop.reviews} addReview={this.props.addReview} linkRef={this.refReview} onSubmitted={this.onSubmitted} />
       </Container>
     )
   }
