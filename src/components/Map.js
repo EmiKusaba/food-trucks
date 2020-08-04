@@ -10,7 +10,15 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
+    this.fetchMap();
+  }
+
+  fetchMap() {
     const address = this.props.address;
+    if(!address) {
+      return;
+    }
+
     const url = `https://api.mapbox.com/geocoding/v5/mapbox.places/${address}.json?country=US&access_token=pk.eyJ1IjoiZW1pa3VzYWJhIiwiYSI6ImNrOWxudHVhaDBlNDIzZnFzZHk5YTlmeG8ifQ.tnFptw0938NlNdsem5LuRA`
     fetch(url)
       .then(res => res.json())
@@ -50,6 +58,10 @@ class Map extends React.Component {
   }
 
   render() {
+    if(!this.state.hasMap) {
+      this.fetchMap();
+    }
+
     const map = (
       <div>
         <div ref={el => this.mapContainer = el}
